@@ -1953,8 +1953,8 @@
         `).join('');
 
         // If previously completed, show results
-        if (app.data.evaluation.completed) {
-          this.displayResults(app.data.evaluation.profile);
+        if (window.app && window.app.data?.evaluation?.completed) {
+          this.displayResults(window.app.data.evaluation.profile);
         }
       },
 
@@ -2899,7 +2899,11 @@
     };
 
     // Instantiate Application Globally
-    const app = new PastoralMenteApp();
+    window.app = null;
+
+window.addEventListener('DOMContentLoaded', () => {
+    window.app = new PastoralMenteApp();
+});
   </script>
 </body>
 </html>
