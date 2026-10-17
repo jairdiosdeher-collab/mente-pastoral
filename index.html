@@ -2142,7 +2142,9 @@
       renderHistory() {
         const list = document.getElementById('diario-history-list');
         if (!list) return;
-
+if (!window.app || !window.app.data || !window.app.data.diario) {
+    return;
+}
         list.innerHTML = window.app.data.diario.map(d => `
           <div class="glass-card" style="padding: 0.8rem; cursor: pointer;" onclick="app.diario.viewEntry('${d.id}')">
             <div style="display:flex; justify-content:space-between; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.2rem;">
@@ -2898,11 +2900,29 @@
       }
     };
 
-    // Instantiate Application Globally
-    window.app = null;
+    // Instantiate Application Glo
+    window.addEventListener('DOMContentLoaded', () => {
 
-window.addEventListener('DOMContentLoaded', () => {
-    window.app = new PastoralMenteApp();
+    try {
+
+        window.app = new PastoralMenteApp();
+
+    } catch (error) {
+
+        console.error(error);
+
+        window.app = {
+            navigate(){},
+            toggleTheme(){},
+            saveData(){},
+            data:{
+                diario:[],
+                evaluation:{}
+            }
+        };
+
+    }
+
 });
   </script>
 </body>
