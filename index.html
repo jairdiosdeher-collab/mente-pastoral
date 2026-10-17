@@ -1953,8 +1953,8 @@
         `).join('');
 
         // If previously completed, show results
-        if (window.app && window.app.data?.evaluation?.completed) {
-          this.displayResults(window.app.data.evaluation.profile);
+        if (window.app && window.window.app.data?.evaluation?.completed) {
+          this.displayResults(window.window.app.data.evaluation.profile);
         }
       },
 
@@ -1976,8 +1976,8 @@
           scores[q.cat] = el ? parseInt(el.value, 10) * 20 : 60;
         });
 
-        app.data.evaluation.scores = scores;
-        app.data.evaluation.completed = true;
+        window.app.data.evaluation.scores = scores;
+        window.app.data.evaluation.completed = true;
 
         // Intelligent profiling generator
         const profile = {
@@ -2001,8 +2001,8 @@
           recomendaciones: 'Consolida tu rutina de respiración 4x4, aplica el tribunal de pensamientos de la TCC cada noche y comparte tus avances en tu grupo de apoyo o con tu pastor.'
         };
 
-        app.data.evaluation.profile = profile;
-        app.saveData();
+        window.app.data.evaluation.profile = profile;
+        window.app.saveData();
 
         this.displayResults(profile);
       },
@@ -2030,8 +2030,8 @@
     PastoralMenteApp.prototype.diario = {
       init() {
         this.renderHistory();
-        if (app.data.diario.length > 0) {
-          this.displayAnalysis(app.data.diario[0].analysis);
+        if (window.app.data.diario.length > 0) {
+          this.displayAnalysis(window.app.data.diario[0].analysis);
         }
       },
 
@@ -2067,8 +2067,8 @@
           analysis
         };
 
-        app.data.diario.unshift(newEntry);
-        app.saveData();
+        window.app.data.diario.unshift(newEntry);
+        window.app.saveData();
 
         // Reset form
         document.getElementById('diario-title').value = '';
@@ -2143,7 +2143,7 @@
         const list = document.getElementById('diario-history-list');
         if (!list) return;
 
-        list.innerHTML = app.data.diario.map(d => `
+        list.innerHTML = window.app.data.diario.map(d => `
           <div class="glass-card" style="padding: 0.8rem; cursor: pointer;" onclick="app.diario.viewEntry('${d.id}')">
             <div style="display:flex; justify-content:space-between; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.2rem;">
               <span>${d.emotion} (${d.intensity}/10)</span>
@@ -2158,7 +2158,7 @@
       },
 
       viewEntry(id) {
-        const item = app.data.diario.find(d => d.id === id);
+        const item = window.app.data.diario.find(d => d.id === id);
         if (item) this.displayAnalysis(item.analysis);
       }
     };
@@ -2182,8 +2182,8 @@
         const today = new Date().toISOString().slice(0, 10);
         const newRecord = { date: today, sueno, ejercicio, biblia, oracion, gratitud };
 
-        app.data.seguimiento.unshift(newRecord);
-        app.saveData();
+        window.app.data.seguimiento.unshift(newRecord);
+        window.app.saveData();
 
         document.getElementById('seg-gratitud').value = '';
         this.renderTable();
@@ -2194,7 +2194,7 @@
         const tbody = document.getElementById('seguimiento-tbody');
         if (!tbody) return;
 
-        tbody.innerHTML = app.data.seguimiento.map(r => `
+        tbody.innerHTML = window.app.data.seguimiento.map(r => `
           <tr style="border-bottom: 1px solid var(--border-color);">
             <td style="padding: 0.6rem; font-weight: 700;">${r.date}</td>
             <td style="padding: 0.6rem;">${r.sueno} hrs</td>
@@ -2221,7 +2221,7 @@
         const box = document.getElementById('chat-messages');
         if (!box) return;
 
-        box.innerHTML = app.data.chat.map(m => {
+        box.innerHTML = window.app.data.chat.map(m => {
           const isUser = m.sender === 'user';
           return `
             <div style="display: flex; justify-content: ${isUser ? 'flex-end' : 'flex-start'};">
@@ -2254,7 +2254,7 @@
         const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         // Add user message
-        app.data.chat.push({ sender: 'user', text, time });
+        window.app.data.chat.push({ sender: 'user', text, time });
         input.value = '';
         this.renderMessages();
 
@@ -2267,13 +2267,13 @@
         // Generate response (Local Heuristic Engine or API)
         const responseText = await this.generateResponse(text);
 
-        app.data.chat.push({
+        window.app.data.chat.push({
           sender: 'bot',
           text: responseText,
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         });
 
-        app.saveData();
+        window.app.saveData();
         this.renderMessages();
       },
 
@@ -2281,9 +2281,9 @@
         const q = query.toLowerCase();
 
         // Check if external API is configured
-        if (app.data.user.aiProvider === 'gemini' && app.data.user.aiKey) {
+        if (window.app.data.user.aiProvider === 'gemini' && window.app.data.user.aiKey) {
           try {
-            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${app.data.user.aiKey}`, {
+            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${window.app.data.user.aiKey}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -2327,10 +2327,10 @@
       },
 
       clearChat() {
-        app.data.chat = [
+        window.app.data.chat = [
           { sender: 'bot', text: 'Conversación reiniciada. Estoy aquí para acompañarte en oración y reflexión.', time: 'Ahora' }
         ];
-        app.saveData();
+        window.app.saveData();
         this.renderMessages();
       }
     };
@@ -2344,7 +2344,7 @@
       },
 
       render() {
-        const p = app.data.plan;
+        const p = window.app.data.plan;
         document.getElementById('plan-title').innerText = p.title;
         document.getElementById('plan-summary').innerText = p.summary;
 
@@ -2380,23 +2380,23 @@
       },
 
       toggleObjective(id) {
-        const item = app.data.plan.objectives.find(o => o.id === id);
+        const item = window.app.data.plan.objectives.find(o => o.id === id);
         if (item) item.done = !item.done;
-        app.saveData();
+        window.app.saveData();
         this.render();
       },
 
       toggleMilestone(w) {
-        const item = app.data.plan.milestones.find(m => m.week === w);
+        const item = window.app.data.plan.milestones.find(m => m.week === w);
         if (item) item.done = !item.done;
-        app.saveData();
+        window.app.saveData();
         this.render();
       },
 
       toggleTask(id) {
-        const item = app.data.plan.tasks.find(t => t.id === id);
+        const item = window.app.data.plan.tasks.find(t => t.id === id);
         if (item) item.done = !item.done;
-        app.saveData();
+        window.app.saveData();
         this.render();
       },
 
@@ -2657,7 +2657,7 @@
         // Render Patients Table
         const tbody = document.getElementById('panel-patients-tbody');
         if (tbody) {
-          tbody.innerHTML = app.data.patients.map(p => `
+          tbody.innerHTML = window.app.data.patients.map(p => `
             <tr style="border-bottom: 1px solid var(--border-color);">
               <td style="padding: 0.6rem; font-weight: 700;">${p.name}</td>
               <td style="padding: 0.6rem;">${p.role}</td>
@@ -2676,7 +2676,7 @@
         // Render SOAP Sessions Log
         const sessionsBox = document.getElementById('panel-sessions-container');
         if (sessionsBox) {
-          sessionsBox.innerHTML = app.data.sessions.map(s => `
+          sessionsBox.innerHTML = window.app.data.sessions.map(s => `
             <div class="glass-card" style="padding: 1rem; border-left: 4px solid var(--secondary);">
               <div style="display:flex; justify-content:space-between; margin-bottom: 0.4rem;">
                 <strong style="font-size: 0.95rem; color: var(--text-main);">${s.patient}</strong>
@@ -2718,8 +2718,8 @@
           s, o, a, p
         };
 
-        app.data.sessions.unshift(newSess);
-        app.saveData();
+        window.app.data.sessions.unshift(newSess);
+        window.app.saveData();
 
         this.closeNewSessionModal();
         this.render();
@@ -2821,7 +2821,7 @@
         // Render checkins list in report
         const list = document.getElementById('rep-checkins-list');
         if (list) {
-          list.innerHTML = app.data.seguimiento.map(s => `
+          list.innerHTML = window.app.data.seguimiento.map(s => `
             <div style="border-bottom: 1px solid var(--border-color); padding: 0.4rem 0;">
               <strong>${s.date}</strong> &bull; Sueño: ${s.sueno}h &bull; Ejercicio: ${s.ejercicio}min &bull; Oración: ${s.oracion}min &bull; <em>"${s.gratitud}"</em>
             </div>
@@ -2835,7 +2835,7 @@
        ========================================================================== */
     PastoralMenteApp.prototype.config = {
       init() {
-        const user = app.data.user;
+        const user = window.app.data.user;
         document.getElementById('cfg-user-name').value = user.name || '';
         document.getElementById('cfg-user-role').value = user.role || 'usuario';
         document.getElementById('cfg-theme').value = user.theme || 'light';
@@ -2844,13 +2844,13 @@
       },
 
       saveAIKeys() {
-        app.data.user.aiProvider = document.getElementById('cfg-ai-provider').value;
-        app.data.user.aiKey = document.getElementById('cfg-ai-key').value.trim();
-        app.saveData();
+        window.app.data.user.aiProvider = document.getElementById('cfg-ai-provider').value;
+        window.app.data.user.aiKey = document.getElementById('cfg-ai-key').value.trim();
+        window.app.saveData();
 
-        document.getElementById('ai-provider-badge').innerText = app.data.user.aiProvider === 'local' 
+        document.getElementById('ai-provider-badge').innerText = window.app.data.user.aiProvider === 'local' 
           ? 'Motor Heurístico' 
-          : app.data.user.aiProvider.toUpperCase();
+          : window.app.data.user.aiProvider.toUpperCase();
 
         alert('Configuración de Inteligencia Artificial guardada localmente.');
       }
@@ -2858,7 +2858,7 @@
 
     PastoralMenteApp.prototype.backup = {
       exportJSON() {
-        const json = JSON.stringify(app.data, null, 2);
+        const json = JSON.stringify(window.app.data, null, 2);
         const blob = new Blob([json], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -2876,8 +2876,8 @@
           try {
             const imported = JSON.parse(evt.target.result);
             if (imported.user && imported.evaluation) {
-              app.data = imported;
-              app.saveData();
+              window.app.data = imported;
+              window.app.saveData();
               alert('¡Respaldo importado con éxito! La página se actualizará.');
               location.reload();
             } else {
