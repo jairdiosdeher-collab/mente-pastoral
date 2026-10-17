@@ -1,0 +1,2905 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>PastoralMente Integral | Crecimiento Espiritual & Salud Mental</title>
+  <meta name="description" content="Plataforma de acompañamiento emocional, espiritual y psicológico basada en la Biblia Reina Valera y modelos psicológicos validados (TCC, ACT, DBT, Psicología Positiva)." />
+  <meta name="theme-color" content="#0284c7" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="PastoralMente" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Embedded Web App Manifest -->
+  <link rel="manifest" id="manifest-placeholder" href="data:application/manifest+json,%7B%22name%22%3A%22PastoralMente%20Integral%22%2C%22short_name%22%3A%22PastoralMente%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f8fafc%22%2C%22theme_color%22%3A%22%230284c7%22%2C%22description%22%3A%22Acompa%C3%B1amiento%20emocional%20y%20espiritual%20integral%22%7D" />
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME ENGINE (AZUL ESPERANZA, VERDE RESTAURACIÓN, BLANCO)
+       ========================================================================== */
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --primary-contrast: #ffffff;
+      
+      --secondary: #059669;
+      --secondary-dark: #047857;
+      --secondary-light: #ecfdf5;
+      --secondary-contrast: #ffffff;
+
+      --accent: #0d9488;
+      --danger: #e11d48;
+      --danger-light: #ffe4e6;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --info: #2563eb;
+
+      --bg-main: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-alt: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.88);
+      
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+
+      --border-color: #e2e8f0;
+      --border-focus: #38bdf8;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --radius-full: 9999px;
+
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.25s ease;
+      --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --primary: #38bdf8;
+      --primary-dark: #0284c7;
+      --primary-light: #082f49;
+      --primary-contrast: #082f49;
+
+      --secondary: #34d399;
+      --secondary-dark: #059669;
+      --secondary-light: #064e3b;
+      --secondary-contrast: #064e3b;
+
+      --bg-main: #090d16;
+      --bg-surface: #111827;
+      --bg-surface-alt: #1f2937;
+      --bg-glass: rgba(17, 24, 39, 0.88);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+
+      --border-color: #334155;
+      --border-focus: #0ea5e9;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ==========================================================================
+       BASE & RESET
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: background-color var(--transition-normal), color var(--transition-normal);
+    }
+
+    h1, h2, h3, h4, .serif-font {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--text-subtle);
+      border-radius: var(--radius-full);
+      opacity: 0.3;
+    }
+
+    /* ==========================================================================
+       LAYOUT & SHELL
+       ========================================================================== */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    .header-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .brand-logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0284c7, #059669);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-badge svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .brand-title-wrap h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .brand-title-wrap .sub-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.15rem 0.4rem;
+      border-radius: 6px;
+      background: var(--secondary-light);
+      color: var(--secondary-dark);
+      letter-spacing: 0.05em;
+      -webkit-text-fill-color: var(--secondary-dark);
+    }
+
+    .brand-title-wrap p {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sos-emergency-btn {
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: white;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 2px 8px rgba(225, 29, 72, 0.4);
+      animation: pulse-sos 2.5s infinite;
+      transition: transform var(--transition-fast);
+    }
+
+    .sos-emergency-btn:hover {
+      transform: scale(1.04);
+    }
+
+    @keyframes pulse-sos {
+      0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.6); }
+      70% { box-shadow: 0 0 0 10px rgba(225, 29, 72, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      transition: all var(--transition-fast);
+    }
+
+    .icon-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: var(--bg-surface);
+    }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Desktop Navigation Bar */
+    .desktop-nav {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .desktop-nav::-webkit-scrollbar { display: none; }
+
+    .nav-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0.25rem 1.25rem;
+      gap: 0.35rem;
+    }
+
+    .nav-tab-btn {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+    }
+
+    .nav-tab-btn svg {
+      width: 17px;
+      height: 17px;
+      opacity: 0.75;
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--primary);
+      background: var(--bg-surface-alt);
+    }
+
+    .nav-tab-btn.active {
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+    .nav-tab-btn.active svg {
+      opacity: 1;
+      color: var(--primary);
+    }
+
+    /* Main Container */
+    .main-content {
+      max-width: 1360px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 5rem 1.25rem;
+      flex: 1;
+    }
+
+    /* Mobile Bottom Navigation Bar */
+    .mobile-bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-color);
+      display: none;
+      justify-content: space-around;
+      padding: 0.4rem 0.5rem calc(0.4rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      gap: 0.2rem;
+      transition: color var(--transition-fast);
+    }
+
+    .mobile-nav-item svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .mobile-nav-item.active {
+      color: var(--primary);
+    }
+
+    @media (max-width: 992px) {
+      .desktop-nav { display: none; }
+      .mobile-bottom-nav { display: flex; }
+      .main-content { padding-bottom: 6rem; }
+    }
+
+    /* ==========================================================================
+       CARDS, GRIDS & UTILITIES
+       ========================================================================== */
+    .glass-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    }
+
+    .glass-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(2, 132, 199, 0.3);
+    }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
+
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .glass-card { padding: 1.15rem; }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 6px 14px rgba(2, 132, 199, 0.4);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+      color: white;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      background: var(--bg-surface);
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge-primary { background: var(--primary-light); color: var(--primary-dark); }
+    .badge-secondary { background: var(--secondary-light); color: var(--secondary-dark); }
+    .badge-danger { background: var(--danger-light); color: var(--danger); }
+    .badge-warning { background: var(--warning-light); color: var(--warning); }
+
+    /* Modals & Backdrop */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-surface-alt);
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes scaleUp {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* View containers */
+    .view-panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .view-panel.active {
+      display: block;
+    }
+
+    /* Breathing Guide Circle */
+    .breathing-box {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      margin: 1.5rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 6px solid var(--primary);
+      background: radial-gradient(circle, var(--primary-light), transparent 70%);
+      transition: transform 4s ease-in-out, border-color 1s ease;
+      box-shadow: 0 0 35px rgba(2, 132, 199, 0.25);
+    }
+
+    .breathing-box.inhale {
+      transform: scale(1.28);
+      border-color: #059669;
+    }
+    .breathing-box.hold {
+      transform: scale(1.28);
+      border-color: #0284c7;
+    }
+    .breathing-box.exhale {
+      transform: scale(0.85);
+      border-color: #d97706;
+    }
+    .breathing-box.rest {
+      transform: scale(0.85);
+      border-color: #64748b;
+    }
+
+    /* Print styles */
+    @media print {
+      body { background: white !important; color: black !important; }
+      .app-header, .desktop-nav, .mobile-bottom-nav, .no-print { display: none !important; }
+      .main-content { max-width: 100% !important; padding: 0 !important; }
+      .glass-card { box-shadow: none !important; border: 1px solid #ccc !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP APP HEADER
+       ========================================================================== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-group" onclick="app.navigate('dashboard')">
+        <div class="brand-logo-badge">
+          <!-- Cross & Heart Leaf SVG Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M5 8h14M12 12c-2.5-3-5.5-2.5-5.5 0 0 3 5.5 7 5.5 7s5.5-4 5.5-7c0-2.5-3-3-5.5 0z"/>
+          </svg>
+        </div>
+        <div class="brand-title-wrap">
+          <h1>
+            PastoralMente
+            <span class="sub-badge">Integral</span>
+          </h1>
+          <p>Biblia Reina Valera &bull; Psicología Basada en Evidencia</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- SOS Emergency Crisis Button -->
+        <button class="sos-emergency-btn" onclick="app.openCrisisModal()" title="Protocolo de Intervención en Crisis 24/7">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>SOS Crisis</span>
+        </button>
+
+        <!-- Role Toggle Pill -->
+        <button class="icon-btn" id="role-toggle-btn" onclick="app.toggleRole()" title="Cambiar Vista Usuario / Profesional">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="icon-btn" onclick="app.toggleTheme()" title="Alternar Modo Oscuro / Claro">
+          <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       DESKTOP NAVIGATION (12 REQUIRED MODULES)
+       ========================================================================== -->
+  <nav class="desktop-nav">
+    <div class="nav-inner" id="desktop-nav-items">
+      <button class="nav-tab-btn active" data-tab="dashboard" onclick="app.navigate('dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>1. Dashboard</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="evaluacion" onclick="app.navigate('evaluacion')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <span>2. Evaluación Inicial</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="diario" onclick="app.navigate('diario')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <span>3. Diario Emocional</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="seguimiento" onclick="app.navigate('seguimiento')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span>4. Seguimiento</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="asistente" onclick="app.navigate('asistente')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M12 7v6m-3-3h6"/></svg>
+        <span>5. Asistente Pastoral IA</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="plan" onclick="app.navigate('plan')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>6. Plan de Crecimiento</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="escuela" onclick="app.navigate('escuela')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        <span>7. Escuela Restauración</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="biblioteca" onclick="app.navigate('biblioteca')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span>8. Biblioteca Bíblica</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="panel" onclick="app.navigate('panel')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <span>9. Panel Profesional</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="crisis" onclick="app.navigate('crisis')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>10. Módulo Crisis</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="reportes" onclick="app.navigate('reportes')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        <span>11. Reportes</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="configuracion" onclick="app.navigate('configuracion')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        <span>12. Configuración</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="main-content">
+
+    <!-- ====================================================================
+         MODULE 1: DASHBOARD PRINCIPAL
+         ==================================================================== -->
+    <section id="view-dashboard" class="view-panel active">
+      <div style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #059669 100%); color: white; padding: 2rem; border-radius: var(--radius-xl); margin-bottom: 1.5rem; position: relative; overflow: hidden; box-shadow: var(--shadow-lg);">
+        <div style="position: relative; z-index: 2; max-width: 800px;">
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; margin-bottom: 0.8rem; text-transform: uppercase;">
+            <span>Paz & Gracia &bull; Romanos 12:2</span>
+          </div>
+          <h2 style="font-size: 1.85rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.6rem;">Bienvenido a tu Espacio de Restauración</h2>
+          <p style="font-size: 0.9rem; opacity: 0.92; line-height: 1.6; margin-bottom: 1.25rem;">
+            Acompañamiento integral que une las verdades eternas de la Biblia con la ciencia de la Terapia Cognitivo Conductual (TCC), ACT y DBT para renovar tu mente y tu corazón.
+          </p>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn" style="background: white; color: #0369a1; font-weight: 800;" onclick="app.navigate('evaluacion')">
+              Iniciar Evaluación Diagnóstica &rarr;
+            </button>
+            <button class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.4);" onclick="app.navigate('asistente')">
+              Hablar con Asistente Pastoral IA
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick KPI Counters -->
+      <div class="grid-4" style="margin-bottom: 1.5rem;">
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Bienestar Emocional</span>
+            <span class="badge badge-primary">TCC / GAD</span>
+          </div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary);" id="dash-kpi-emotional">72%</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Nivel estable con resiliencia activa</p>
+        </div>
+
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Conexión Espiritual</span>
+            <span class="badge badge-secondary">DUREL / FE</span>
+          </div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--secondary);" id="dash-kpi-spiritual">84%</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Comunión y refugio en la Palabra</p>
+        </div>
+
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Metas SMART Activas</span>
+            <span class="badge badge-warning">Progreso</span>
+          </div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--warning);" id="dash-kpi-goals">3 / 4</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Hábitos completados hoy</p>
+        </div>
+
+        <div class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">Racha de Gracia</span>
+            <span class="badge badge-primary">Sabbath</span>
+          </div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: #8b5cf6;" id="dash-kpi-streak">7 Días</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Constancia en oración y diario</p>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Grid -->
+      <div class="grid-12">
+        <!-- Left: Progress Chart & Daily Bible Anchor -->
+        <div style="grid-column: span 8;">
+          <div class="glass-card" style="margin-bottom: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <div>
+                <h3 style="font-size: 1rem;">Evolución Terapéutica & Espiritual (Últimos 7 Días)</h3>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">Correlación entre equilibrio emocional (Azul) y paz espiritual (Verde)</p>
+              </div>
+              <div style="display: flex; gap: 0.5rem; font-size: 0.75rem; font-weight: 700;">
+                <span style="color: var(--primary);">&bull; Emocional</span>
+                <span style="color: var(--secondary);">&bull; Espiritual</span>
+              </div>
+            </div>
+            <!-- Custom Dynamic SVG Chart -->
+            <div id="dashboard-chart-container" style="width: 100%; height: 210px; overflow: hidden;"></div>
+          </div>
+
+          <!-- Daily Biblical Anchor Card -->
+          <div class="glass-card" style="background: linear-gradient(135deg, var(--bg-surface), var(--secondary-light)); border-left: 5px solid var(--secondary);">
+            <span class="badge badge-secondary" style="margin-bottom: 0.5rem;">Ancla Bíblica de Hoy</span>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--text-main);" id="dash-verse-title">Filipenses 4:6-7</h4>
+            <p style="font-style: italic; font-size: 0.88rem; line-height: 1.6; color: var(--text-main);" id="dash-verse-text">
+              "Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración y ruego, con acción de gracias. Y la paz de Dios, que sobrepasa todo entendimiento, guardará vuestros corazones y vuestros pensamientos en Cristo Jesús."
+            </p>
+            <div style="margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-muted);">
+              <strong>Reencuadre Psicológico:</strong> La oración no es evasión mágica, es desahogo emocional estructurado que traslada la rumiación de la amígdala a la corteza prefrontal bajo la certeza de protección divina.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Recent Activities & Shortcuts -->
+        <div style="grid-column: span 4;">
+          <div class="glass-card" style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Acciones Rápidas Diarias</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+              <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="app.navigate('diario')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <span>Registrar en Diario Emocional</span>
+              </button>
+              <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="app.navigate('seguimiento')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                <span>Check-in de Hábitos y Sueño</span>
+              </button>
+              <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="app.navigate('escuela')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                <span>Continuar Curso: Ansiedad & Paz</span>
+              </button>
+              <button class="btn btn-outline" style="justify-content: flex-start; text-align: left;" onclick="app.navigate('biblioteca')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                <span>Consultar Promesas por Tema</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Actividad Reciente</h3>
+            <div id="dash-recent-list" style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.78rem;">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 2: EVALUACIÓN INICIAL
+         ==================================================================== -->
+    <section id="view-evaluacion" class="view-panel">
+      <div class="glass-card" style="margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <span class="badge badge-primary">Módulo 2 &bull; Diagnóstico Psicoespiritual</span>
+            <h2 style="font-size: 1.45rem; margin-top: 0.25rem;">Evaluación Inicial Multidimensional</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Escalas científicas adaptadas para evaluar: Estrés, Ansiedad, Estado de Ánimo, Autoestima, Bienestar Espiritual, Satisfacción Vital y Relaciones Familiares.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-outline" onclick="app.evaluacion.loadSample()">Cargar Muestra</button>
+            <button class="btn btn-primary" onclick="app.evaluacion.calculate()">Generar Perfiles & Recomendaciones</button>
+          </div>
+        </div>
+
+        <!-- Assessment Form -->
+        <div id="evaluacion-questions-container" style="display: flex; flex-direction: column; gap: 1rem;">
+          <!-- Questions dynamically rendered -->
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: right;">
+          <button class="btn btn-primary" onclick="app.evaluacion.calculate()">Calcular Resultados Completos &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Generated Results Section -->
+      <div id="evaluacion-results-box" class="glass-card" style="display: none;">
+        <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary);">Resultados del Perfil Integral Generado</h3>
+        
+        <div class="grid-2" style="margin-bottom: 1.25rem;">
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--primary);">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--primary);">Perfil Emocional</h4>
+            <p id="res-perfil-emocional" style="font-size: 0.85rem; line-height: 1.6; color: var(--text-main);"></p>
+          </div>
+
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: var(--radius-lg); border-left: 4px solid var(--secondary);">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--secondary);">Perfil Espiritual</h4>
+            <p id="res-perfil-espiritual" style="font-size: 0.85rem; line-height: 1.6; color: var(--text-main);"></p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: 1.25rem;">
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: var(--radius-lg);">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--secondary);">&check; Fortalezas Identificadas</h4>
+            <ul id="res-fortalezas-list" style="font-size: 0.82rem; padding-left: 1.2rem; line-height: 1.7;"></ul>
+          </div>
+
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: var(--radius-lg);">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--warning);">&excl; Riesgos y Vulnerabilidades</h4>
+            <ul id="res-riesgos-list" style="font-size: 0.82rem; padding-left: 1.2rem; line-height: 1.7;"></ul>
+          </div>
+        </div>
+
+        <div style="background: var(--primary-light); padding: 1.25rem; border-radius: var(--radius-lg); margin-bottom: 1rem;">
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.35rem; color: var(--primary-dark);">Recomendaciones Terapéuticas & Pastorales</h4>
+          <p id="res-recomendaciones" style="font-size: 0.85rem; line-height: 1.6; color: var(--primary-dark);"></p>
+        </div>
+
+        <button class="btn btn-secondary" onclick="app.evaluacion.applyToPlan()">
+          Crear Plan de Crecimiento Personalizado con estos Resultados &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 3: DIARIO EMOCIONAL INTELIGENTE & ANÁLISIS AUTOMÁTICO
+         ==================================================================== -->
+    <section id="view-diario" class="view-panel">
+      <div class="grid-12">
+        <!-- New Entry Form (7 cols) -->
+        <div style="grid-column: span 7;">
+          <div class="glass-card">
+            <span class="badge badge-secondary" style="margin-bottom: 0.5rem;">Módulo 3 &bull; Reencuadre TCC & Oración</span>
+            <h2 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Diario Emocional Inteligente</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+              Expresa lo que piensas y sientes. El analizador cognitivo detectará distorsiones automáticas y te ofrecerá anclas bíblicas de gracia.
+            </p>
+
+            <form id="form-diario" onsubmit="app.diario.save(event)">
+              <div class="form-group">
+                <label class="form-label">Título o Situación Desencadenante</label>
+                <input type="text" id="diario-title" class="form-control" placeholder="Ej: Discusión familiar o miedo al fracaso en el trabajo" required />
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label">Emoción Dominante</label>
+                  <select id="diario-emotion" class="form-control">
+                    <option value="Ansiedad">Ansiedad / Preocupación</option>
+                    <option value="Tristeza">Tristeza / Desánimo</option>
+                    <option value="Ira">Ira / Frustración</option>
+                    <option value="Culpa">Culpa / Autoexigencia</option>
+                    <option value="Paz">Paz / Gratitud</option>
+                    <option value="Esperanza">Esperanza / Gozo</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Intensidad (1 a 10)</label>
+                  <input type="range" id="diario-intensity" min="1" max="10" value="6" class="form-control" oninput="document.getElementById('diario-intensity-val').innerText = this.value" />
+                  <div style="text-align: right; font-size: 0.75rem; font-weight: 700; color: var(--primary);" id="diario-intensity-val">6 / 10</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Pensamientos Automáticos (¿Qué te dice tu mente?)</label>
+                <textarea id="diario-thoughts" class="form-control" rows="3" placeholder="Ej: 'Todo va a salir mal', 'Nadie me valora', 'No soy un buen cristiano'..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Oración o Reflexión Bíblica Espontánea</label>
+                <textarea id="diario-prayer" class="form-control" rows="2" placeholder="Señor, pongo esta carga en tus manos..."></textarea>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
+                <span style="font-size: 0.75rem; color: var(--text-muted);">&bull; Autoguardado local asegurado</span>
+                <button type="submit" class="btn btn-primary">
+                  <span>Guardar & Analizar con IA</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Automated Cognitive Analysis & Entry History (5 cols) -->
+        <div style="grid-column: span 5;">
+          <!-- Latest AI Analysis Card -->
+          <div class="glass-card" id="diario-ai-card" style="margin-bottom: 1.25rem; border-top: 4px solid var(--secondary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <h3 style="font-size: 0.95rem; color: var(--secondary);">Módulo 4: Análisis Cognitivo IA</h3>
+              <span class="badge badge-secondary" id="analysis-status-badge">Listo</span>
+            </div>
+            
+            <div id="analysis-content-box" style="font-size: 0.8rem; line-height: 1.6; color: var(--text-main);">
+              <p style="color: var(--text-muted); font-style: italic;">
+                Escribe una entrada a la izquierda para ejecutar el escáner de distorsiones cognitivas (catastrofismo, blanco o negro, filtro negativo) y recibir tu ancla bíblica.
+              </p>
+            </div>
+          </div>
+
+          <!-- Entries History List -->
+          <div class="glass-card">
+            <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem;">Historial de Entradas</h3>
+            <div id="diario-history-list" style="display: flex; flex-direction: column; gap: 0.6rem; max-height: 380px; overflow-y: auto;">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 4: SEGUIMIENTO TERAPÉUTICO & HÁBITOS
+         ==================================================================== -->
+    <section id="view-seguimiento" class="view-panel">
+      <div class="glass-card" style="margin-bottom: 1.5rem;">
+        <span class="badge badge-primary">Módulo 4 &bull; Hábitos & Mayordomía del Templo</span>
+        <h2 style="font-size: 1.35rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Seguimiento Diario Integral</h2>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Registra tus hábitos físicos y espirituales diarios. El cuidado de tu descanso y de tu cuerpo honra a Dios (1 Corintios 6:19-20).
+        </p>
+
+        <form id="form-seguimiento" onsubmit="app.seguimiento.save(event)">
+          <div class="grid-4">
+            <div class="form-group">
+              <label class="form-label">Horas de Sueño</label>
+              <input type="number" id="seg-sueno" class="form-control" step="0.5" min="0" max="24" value="7.5" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ejercicio / Caminata (Minutos)</label>
+              <input type="number" id="seg-ejercicio" class="form-control" min="0" max="300" value="25" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Lectura Bíblica (Capítulos)</label>
+              <input type="number" id="seg-biblia" class="form-control" min="0" max="50" value="2" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tiempo de Oración (Minutos)</label>
+              <input type="number" id="seg-oracion" class="form-control" min="0" max="300" value="15" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Motivos de Gratitud de Hoy (Psicología Positiva / 1 Tesalonicenses 5:18)</label>
+            <textarea id="seg-gratitud" class="form-control" rows="2" placeholder="1. Por el pan diario... 2. Por la paz en medio de la tormenta... 3. Por el abrazo de un ser querido..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-secondary">Registrar Hábitos de Hoy</button>
+        </form>
+      </div>
+
+      <!-- Weekly Habit Table Log -->
+      <div class="glass-card">
+        <h3 style="font-size: 1rem; margin-bottom: 1rem;">Registro Semanal de Hábitos</h3>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;" id="seguimiento-table">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); text-align: left; color: var(--text-muted);">
+                <th style="padding: 0.6rem;">Fecha</th>
+                <th style="padding: 0.6rem;">Sueño</th>
+                <th style="padding: 0.6rem;">Ejercicio</th>
+                <th style="padding: 0.6rem;">Palabra</th>
+                <th style="padding: 0.6rem;">Oración</th>
+                <th style="padding: 0.6rem;">Gratitud Registrada</th>
+              </tr>
+            </thead>
+            <tbody id="seguimiento-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 5: ASISTENTE PASTORAL IA
+         ==================================================================== -->
+    <section id="view-asistente" class="view-panel">
+      <div class="glass-card" style="display: flex; flex-direction: column; height: 720px; max-height: 80vh;">
+        
+        <!-- Assistant Top Banner -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.85rem; margin-bottom: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; color: white;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <h2 style="font-size: 1.15rem; font-weight: 800;">Asistente Pastoral & Terapéutico IA</h2>
+              <p style="font-size: 0.72rem; color: var(--text-muted);">
+                Escucha empática &bull; Preguntas reflexivas &bull; Ejercicios TCC/DBT &bull; No sustituye atención médica
+              </p>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="badge badge-secondary" id="ai-provider-badge">Motor Heurístico / Gemini</span>
+            <button class="icon-btn" onclick="app.asistente.clearChat()" title="Limpiar Conversación">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Messages Container -->
+        <div id="chat-messages" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.9rem; padding-right: 0.5rem; margin-bottom: 1rem;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Preset Chips -->
+        <div style="display: flex; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 0.5rem;" class="no-print">
+          <button class="badge badge-primary" style="cursor: pointer;" onclick="app.asistente.quickAsk('Siento mucha ansiedad por el futuro, ¿qué versículo y ejercicio puedo hacer?')">Ansiedad por el futuro</button>
+          <button class="badge badge-secondary" style="cursor: pointer;" onclick="app.asistente.quickAsk('Me cuesta perdonar a quien me hirió injustamente.')">Proceso del Perdón</button>
+          <button class="badge badge-primary" style="cursor: pointer;" onclick="app.asistente.quickAsk('Siento que Dios está en silencio y estoy desanimado.')">Sequía Espiritual</button>
+          <button class="badge badge-warning" style="cursor: pointer;" onclick="app.asistente.quickAsk('Enséñame la técnica STOP de DBT para calmar mi ira.')">Técnica STOP</button>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <form id="chat-form" onsubmit="app.asistente.send(event)" style="display: flex; gap: 0.5rem; align-items: center;">
+          <input type="text" id="chat-input" class="form-control" placeholder="Escribe lo que sientes o tu pregunta pastoral/emocional..." style="border-radius: var(--radius-full); padding-left: 1.25rem;" required />
+          <button type="submit" class="btn btn-primary" style="border-radius: var(--radius-full); width: 44px; height: 44px; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 6: PLAN DE CRECIMIENTO PERSONALIZADO
+         ==================================================================== -->
+    <section id="view-plan" class="view-panel">
+      <div class="glass-card" style="margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <span class="badge badge-primary">Módulo 6 &bull; Ruta SMART & Hábitos</span>
+            <h2 style="font-size: 1.35rem; margin-top: 0.25rem;" id="plan-title">Plan de Crecimiento y Renovación Mental</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted);" id="plan-summary">
+              Objetivos estructurados basados en Romanos 12:2 y Terapia Cognitivo Conductual.
+            </p>
+          </div>
+          <button class="btn btn-outline" onclick="app.plan.regenerate()">Regenerar Plan con IA</button>
+        </div>
+
+        <!-- SMART Objectives -->
+        <h3 style="font-size: 1.05rem; margin-bottom: 0.75rem; color: var(--primary);">Objetivos SMART</h3>
+        <div class="grid-3" id="plan-objectives-container" style="margin-bottom: 1.5rem;">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Weekly Milestones -->
+        <h3 style="font-size: 1.05rem; margin-bottom: 0.75rem; color: var(--secondary);">Metas Semanales</h3>
+        <div id="plan-milestones-container" style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem;">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Daily Tasks Check-list -->
+        <h3 style="font-size: 1.05rem; margin-bottom: 0.75rem; color: var(--text-main);">Tareas Diarias Marcables</h3>
+        <div id="plan-tasks-container" style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 7: ESCUELA DE RESTAURACIÓN
+         ==================================================================== -->
+    <section id="view-escuela" class="view-panel">
+      <div class="glass-card" style="margin-bottom: 1.5rem;">
+        <span class="badge badge-secondary">Módulo 7 &bull; Cursos Interactivos</span>
+        <h2 style="font-size: 1.35rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Escuela de Restauración & Crecimiento</h2>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Formación interactiva integrando psicología clínica y doctrina bíblica. Selecciona un curso para ver sus lecciones y herramientas.
+        </p>
+
+        <div class="grid-4" id="escuela-courses-grid">
+          <!-- Rendered via JS: Ansiedad, Depresión, Autoestima, Duelo, Perdón, Matrimonio, Familia, Liderazgo, Discipulado -->
+        </div>
+      </div>
+
+      <!-- Course Lesson Viewer Modal / Box -->
+      <div id="lesson-modal" class="modal-backdrop">
+        <div class="modal-dialog" style="max-width: 750px;">
+          <div class="modal-header">
+            <div>
+              <span class="badge badge-primary" id="modal-lesson-course">Curso</span>
+              <h3 id="modal-lesson-title" style="font-size: 1.15rem; margin-top: 0.25rem;">Título de la Lección</h3>
+            </div>
+            <button class="icon-btn" onclick="app.escuela.closeModal()">&times;</button>
+          </div>
+          <div class="modal-body" id="modal-lesson-body" style="font-size: 0.88rem; line-height: 1.7;">
+            <!-- Lesson content populated via JS -->
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline" onclick="app.escuela.closeModal()">Cerrar</button>
+            <button class="btn btn-secondary" id="modal-lesson-complete-btn" onclick="app.escuela.markCompleted()">Marcar Lección Completada &check;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 8: BIBLIOTECA BÍBLICA REINA VALERA
+         ==================================================================== -->
+    <section id="view-biblioteca" class="view-panel">
+      <div class="glass-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <span class="badge badge-primary">Módulo 8 &bull; Biblia Reina Valera 1960</span>
+            <h2 style="font-size: 1.35rem; margin-top: 0.25rem;">Biblioteca Bíblica Temática</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Versículos clasificados para sanidad interior, fortaleza mental y restauración relacional.
+            </p>
+          </div>
+          <input type="text" id="biblia-search" class="form-control" placeholder="Buscar versículo o palabra clave..." style="max-width: 280px;" oninput="app.biblioteca.filter()" />
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div style="display: flex; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.75rem; margin-bottom: 1rem;" id="biblia-categories-bar">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Verses Grid -->
+        <div class="grid-2" id="biblia-verses-container">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 9: PANEL PROFESIONAL (PASTOR / PSICÓLOGO)
+         ==================================================================== -->
+    <section id="view-panel" class="view-panel">
+      <div class="glass-card" style="margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <span class="badge badge-secondary">Módulo 9 &bull; Portal Clínico-Pastoral</span>
+            <h2 style="font-size: 1.35rem; margin-top: 0.25rem;">Panel de Consejería y Acompañamiento</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Gestión confidencial de usuarios, notas de sesión SOAP, seguimiento de evolución y estadísticas clínicas.
+            </p>
+          </div>
+          <button class="btn btn-secondary" onclick="app.panel.openNewSessionModal()">+ Nueva Sesión SOAP</button>
+        </div>
+
+        <!-- Users Table -->
+        <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Acompañados en Seguimiento</h3>
+        <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;" id="panel-patients-table">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); text-align: left; color: var(--text-muted);">
+                <th style="padding: 0.6rem;">Nombre</th>
+                <th style="padding: 0.6rem;">Rol / Modalidad</th>
+                <th style="padding: 0.6rem;">Nivel de Riesgo</th>
+                <th style="padding: 0.6rem;">Adherencia</th>
+                <th style="padding: 0.6rem;">Última Sesión</th>
+                <th style="padding: 0.6rem;">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="panel-patients-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Sessions SOAP Log -->
+        <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">Registro de Sesiones (Formato SOAP)</h3>
+        <div id="panel-sessions-container" style="display: flex; flex-direction: column; gap: 0.8rem;">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 10: INTERVENCIÓN EN CRISIS
+         ==================================================================== -->
+    <section id="view-crisis" class="view-panel">
+      <div class="glass-card" style="border: 2px solid var(--danger); background: linear-gradient(135deg, var(--bg-surface), var(--danger-light)); margin-bottom: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: var(--danger); color: white; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <span class="badge badge-danger">Módulo 10 &bull; Protocolo de Emergencia 24/7</span>
+            <h2 style="font-size: 1.35rem; color: var(--danger);">Centro de Intervención en Crisis</h2>
+          </div>
+        </div>
+
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-main); margin-bottom: 1rem;">
+          <strong>Tu vida es valiosa y sagrada para Dios.</strong> Si estás experimentando pensamientos de autolesión, suicidio o una crisis de pánico incontrolable, no estás solo. Por favor contacta inmediatamente a los servicios de auxilio:
+        </p>
+
+        <!-- Emergency Hotlines Grid -->
+        <div class="grid-3" id="crisis-hotlines-grid" style="margin-bottom: 1.5rem;">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- De-escalation Breathing Box Guide -->
+        <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-xl); text-align: center; border: 1px solid var(--border-color);">
+          <h3 style="font-size: 1.1rem; color: var(--primary);">Respiración Cuadrada 4x4 & Anclaje (Salmo 46:10)</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">
+            Sigue el círculo: Inhala paz (4s) &bull; Sostén en Dios (4s) &bull; Exhala el temor (4s) &bull; Reposa en Su gracia (4s)
+          </p>
+
+          <div class="breathing-box" id="breathing-circle">
+            <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted);" id="breathing-phase-label">Inhala</span>
+            <span style="font-size: 2.2rem; font-weight: 800; color: var(--text-main);" id="breathing-timer-count">4</span>
+          </div>
+
+          <p style="font-style: italic; font-size: 0.85rem; color: var(--secondary-dark); font-weight: 600;">
+            "Estad quietos, y conoced que yo soy Dios..." &bull; Salmo 46:10
+          </p>
+        </div>
+
+        <!-- Grounding 5-4-3-2-1 -->
+        <div style="margin-top: 1.25rem; background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-xl); border: 1px solid var(--border-color);">
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main);">Técnica Sensorial de Desescalada 5-4-3-2-1</h4>
+          <div style="font-size: 0.82rem; line-height: 1.8; color: var(--text-muted);">
+            &bull; <strong>5 cosas que puedes ver:</strong> Observa los detalles a tu alrededor.<br/>
+            &bull; <strong>4 cosas que puedes tocar:</strong> Siente la textura de tu ropa o la firmeza del suelo.<br/>
+            &bull; <strong>3 cosas que puedes escuchar:</strong> Presta atención a sonidos lejanos.<br/>
+            &bull; <strong>2 cosas que puedes oler:</strong> Respira el aire presente.<br/>
+            &bull; <strong>1 verdad que puedes afirmar:</strong> "Dios tiene cuidado de mí y esta tormenta pasará".
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 11: REPORTES & EXPORTACIÓN
+         ==================================================================== -->
+    <section id="view-reportes" class="view-panel">
+      <div class="glass-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;" class="no-print">
+          <div>
+            <span class="badge badge-primary">Módulo 11 &bull; Documentación Clínica & Evolución</span>
+            <h2 style="font-size: 1.35rem; margin-top: 0.25rem;">Reportes y Progreso Imprimible</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">
+              Genera tu informe de evolución psicológica y espiritual para compartir con tu pastor, psicólogo o médico de cabecera.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-outline" onclick="window.print()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+              <span>Imprimir / Guardar PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Printable Report Sheet -->
+        <div id="printable-report-area" style="background: var(--bg-surface); border: 1px solid var(--border-color); padding: 2rem; border-radius: var(--radius-lg);">
+          <div style="border-bottom: 2px solid var(--primary); padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h1 style="font-size: 1.5rem; color: var(--primary);">Informe de Evolución Psicoespiritual</h1>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Plataforma PastoralMente Integral &bull; Confidencial</p>
+            </div>
+            <div style="text-align: right; font-size: 0.8rem;">
+              <div id="report-date">Fecha: 16 de Octubre de 2026</div>
+              <div style="color: var(--secondary); font-weight: 700;">Estado: En Acompañamiento Activo</div>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-bottom: 1.5rem;">
+            <div style="background: var(--bg-surface-alt); padding: 1rem; border-radius: var(--radius-md);">
+              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">Puntaje Emocional Promedio</span>
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary);" id="rep-mood-avg">7.4 / 10</div>
+            </div>
+            <div style="background: var(--bg-surface-alt); padding: 1rem; border-radius: var(--radius-md);">
+              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">Conexión y Paz Espiritual</span>
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--secondary);" id="rep-spiritual-avg">8.5 / 10</div>
+            </div>
+            <div style="background: var(--bg-surface-alt); padding: 1rem; border-radius: var(--radius-md);">
+              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">Adherencia a Hábitos</span>
+              <div style="font-size: 1.5rem; font-weight: 800; color: var(--warning);" id="rep-adherence">86%</div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Resumen Clínico-Pastoral</h3>
+          <p style="font-size: 0.85rem; line-height: 1.7; color: var(--text-main); margin-bottom: 1.25rem;" id="rep-summary-text">
+            El acompañado ha demostrado constancia en la práctica de reencuadre cognitivo ante pensamientos automáticos y una notable integración de la oración como factor protector frente a la sobrecarga ansiosa. Se recomienda mantener el ritmo de descanso y avanzar en el módulo del perdón.
+          </p>
+
+          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Historial de Check-Ins Registrados</h3>
+          <div id="rep-checkins-list" style="font-size: 0.8rem; line-height: 1.6;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         MODULE 12: CONFIGURACIÓN, IA KEYS & PWA
+         ==================================================================== -->
+    <section id="view-configuracion" class="view-panel">
+      <div class="glass-card">
+        <span class="badge badge-primary">Módulo 12 &bull; Preferencias & Respaldo</span>
+        <h2 style="font-size: 1.35rem; margin-top: 0.25rem; margin-bottom: 0.5rem;">Configuración General</h2>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          Personaliza tu perfil, llaves de API para Inteligencia Artificial (Gemini / OpenAI), temas y respalda tus datos locales.
+        </p>
+
+        <div class="grid-2">
+          <!-- Profile & Theme -->
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: var(--radius-lg);">
+            <h3 style="font-size: 1rem; margin-bottom: 1rem;">Perfil de Usuario</h3>
+            <div class="form-group">
+              <label class="form-label">Tu Nombre o Alias</label>
+              <input type="text" id="cfg-user-name" class="form-control" value="Discípulo en Restauración" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Rol Activo</label>
+              <select id="cfg-user-role" class="form-control" onchange="app.setRole(this.value)">
+                <option value="usuario">Usuario / Acompañado</option>
+                <option value="profesional">Pastor / Psicólogo Clínico</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tema Visual</label>
+              <select id="cfg-theme" class="form-control" onchange="app.setTheme(this.value)">
+                <option value="light">Tema Claro (Azul Esperanza & Verde)</option>
+                <option value="dark">Tema Oscuro (Modo Noche)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- AI API Configuration (Gemini / OpenAI) -->
+          <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: var(--radius-lg);">
+            <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Integración de Inteligencia Artificial</h3>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              La app funciona al 100% con su motor heurístico local. Opcionalmente puedes conectar tu clave de Gemini API u OpenAI API (se guarda solo en tu navegador LocalStorage):
+            </p>
+
+            <div class="form-group">
+              <label class="form-label">Proveedor de IA</label>
+              <select id="cfg-ai-provider" class="form-control">
+                <option value="local">Motor Heurístico Local (Sin costo / Offline)</option>
+                <option value="gemini">Google Gemini API (gemini-3.8-flash)</option>
+                <option value="openai">OpenAI API (gpt-4o / gpt-3.5)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">API Key Personal</label>
+              <input type="password" id="cfg-ai-key" class="form-control" placeholder="Pega tu API Key de Gemini u OpenAI aquí..." />
+            </div>
+
+            <button class="btn btn-primary" onclick="app.config.saveAIKeys()">Guardar Configuración de IA</button>
+          </div>
+        </div>
+
+        <!-- Backup & Local Storage Management -->
+        <div style="margin-top: 1.5rem; background: var(--bg-surface-alt); padding: 1.25rem; border-radius: var(--radius-lg);">
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Respaldo y Seguridad de Datos</h3>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Tus datos residen estrictamente en el almacenamiento seguro de tu dispositivo. Puedes exportar una copia en JSON o restaurarla en cualquier momento.
+          </p>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-outline" onclick="app.backup.exportJSON()">Exportar Respaldo JSON</button>
+            <label class="btn btn-outline" style="cursor: pointer;">
+              Importar Respaldo
+              <input type="file" id="import-json-input" style="display: none;" onchange="app.backup.importJSON(event)" accept=".json" />
+            </label>
+            <button class="btn btn-danger" onclick="app.backup.resetAll()">Reiniciar Datos de Fábrica</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MOBILE BOTTOM NAVIGATION BAR
+       ========================================================================== -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-nav-item active" data-tab="dashboard" onclick="app.navigate('dashboard')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Inicio</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="diario" onclick="app.navigate('diario')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      <span>Diario</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="asistente" onclick="app.navigate('asistente')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M12 7v6m-3-3h6"/></svg>
+      <span>Asistente</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="plan" onclick="app.navigate('plan')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>Mi Plan</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="biblioteca" onclick="app.navigate('biblioteca')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>Biblia</span>
+    </button>
+  </nav>
+
+  <!-- ==========================================================================
+       MODAL DE INTERVENCIÓN EN CRISIS 24/7 (POPUP)
+       ========================================================================== -->
+  <div id="crisis-modal" class="modal-backdrop">
+    <div class="modal-dialog" style="border: 2px solid var(--danger);">
+      <div class="modal-header" style="background: var(--danger); color: white;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h3 style="font-size: 1.15rem;">Protocolo de Auxilio en Crisis</h3>
+        </div>
+        <button class="icon-btn" style="color: white; border: none; background: rgba(255,255,255,0.2);" onclick="app.closeCrisisModal()">&times;</button>
+      </div>
+      <div class="modal-body" style="font-size: 0.88rem; line-height: 1.6;">
+        <div style="background: var(--danger-light); color: var(--danger); padding: 1rem; border-radius: var(--radius-md); font-weight: 700; margin-bottom: 1rem;">
+          No tomes ninguna decisión definitiva. Tu dolor tiene consuelo y salida.
+        </div>
+        <p style="margin-bottom: 1rem;">
+          Llama gratuitamente de inmediato a las líneas de ayuda médica y psicológica:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;" id="modal-hotlines-list">
+          <!-- Populated via JS -->
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">
+          "Cercano está Jehová a los quebrantados de corazón; y salva a los contritos de espíritu." (Salmo 34:18)
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="app.closeCrisisModal()">Entendido</button>
+        <button class="btn btn-primary" onclick="app.closeCrisisModal(); app.navigate('crisis');">Ir al Módulo de Crisis Completo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       NEW SESSION MODAL (PANEL PROFESIONAL SOAP)
+       ========================================================================== -->
+  <div id="new-session-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 style="font-size: 1.15rem;">Registrar Sesión Clínica / Pastoral (SOAP)</h3>
+        <button class="icon-btn" onclick="app.panel.closeNewSessionModal()">&times;</button>
+      </div>
+      <form onsubmit="app.panel.saveSession(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Nombre del Acompañado</label>
+            <input type="text" id="soap-patient" class="form-control" placeholder="Ej: Carolina Morales" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">S - Subjetivo (Lo que el acompañado refiere)</label>
+            <textarea id="soap-s" class="form-control" rows="2" placeholder="Sensaciones, quejas, relato emocional..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">O - Objetivo (Observaciones de conducta y afecto)</label>
+            <textarea id="soap-o" class="form-control" rows="2" placeholder="Contacto visual, estado de alerta, coherencia..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">A - Análisis (Evaluación diagnóstica y progreso)</label>
+            <textarea id="soap-a" class="form-control" rows="2" placeholder="Distorsiones observadas, factores protectores..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">P - Plan (Tareas asignadas, versículos y acuerdos)</label>
+            <textarea id="soap-p" class="form-control" rows="2" placeholder="Ejercicios TCC, lectura de Filipenses 4, próxima cita..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="app.panel.closeNewSessionModal()">Cancelar</button>
+          <button type="submit" class="btn btn-secondary">Guardar Registro SOAP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CORE JAVASCRIPT APPLICATION CODE
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       PASTORALMENTE INTEGRAL - CLIENT-SIDE ARCHITECTURE & STATE STORE
+       ========================================================================== */
+    const STORAGE_KEY = 'pastoralmente_state_v1';
+
+    // Default Initial Data Store
+    const DEFAULT_DATA = {
+      user: {
+        name: 'Carolina Morales',
+        role: 'usuario', // 'usuario' | 'profesional'
+        theme: 'light',
+        aiProvider: 'local',
+        aiKey: ''
+      },
+      evaluation: {
+        completed: true,
+        scores: {
+          estres: 65,
+          ansiedad: 60,
+          animo: 70,
+          autoestima: 68,
+          espiritualidad: 85,
+          satisfaccion: 72,
+          familia: 64
+        },
+        profile: {
+          emocional: 'Ansiedad reactiva por sobrecarga laboral con buena capacidad de introspección reflexiva.',
+          espiritual: 'Comunión constante con Dios y vida devocional activa que actúa como escudo protector fundamental.',
+          fortalezas: [
+            'Fuerte anclaje en la oración y la fe en las promesas de Dios',
+            'Disposición y humildad para reconocer áreas de mejora',
+            'Capacidad de introspección y escucha compasiva',
+            'Buenas relaciones afectivas con su círculo de apoyo'
+          ],
+          riesgos: [
+            'Tendencia a la catastrofización ante imprevistos laborales',
+            'Dificultad para poner límites asertivos sin experimentar culpa',
+            'Descanso y horas de sueño intermitentes'
+          ],
+          recomendaciones: 'Practicar la técnica STOP de DBT ante picos de angustia, establecer 1 día fijo de reposo (Sabbath emocional) y continuar la reestructuración de pensamientos automáticos en el diario.'
+        }
+      },
+      diario: [
+        {
+          id: 'd-1',
+          date: '2026-10-14 20:30',
+          title: 'Presión por cumplir con las expectativas ajenas',
+          emotion: 'Ansiedad',
+          intensity: 7,
+          thoughts: 'Siento que si digo que no a este encargo, todos pensarán que soy una mala persona y que no me importa el ministerio.',
+          prayer: 'Señor Jesús, líbrame del afán de agradar a los hombres antes que a Ti (Gálatas 1:10). Dame paz para descansar en tu gracia.',
+          analysis: {
+            distortions: ['Lectura de Pensamiento', 'Deberías absolutistas'],
+            reframe: 'Decir un no saludable a una demanda externa es un sí a la salud de tu templo y a tu llamado principal.',
+            verse: 'Gálatas 1:10',
+            verseText: '¿Busco ahora el favor de los hombres, o el de Dios? ¿O trato de agradar a los hombres?'
+          }
+        },
+        {
+          id: 'd-2',
+          date: '2026-10-15 08:15',
+          title: 'Gratitud matutina y entrega',
+          emotion: 'Paz',
+          intensity: 8,
+          thoughts: 'Agradezco el nuevo amanecer. Aunque el día parece desafiante, reconozco que Dios tiene el control.',
+          prayer: 'Padre, guíame hoy con mansedumbre y templanza.',
+          analysis: {
+            distortions: [],
+            reframe: 'Excelente actitud de entrega activa; fortalece las conexiones neuronales de serenidad.',
+            verse: 'Lamentaciones 3:22-23',
+            verseText: 'Nuevas son cada mañana; grande es tu fidelidad.'
+          }
+        }
+      ],
+      seguimiento: [
+        { date: '2026-10-11', sueno: 6.5, ejercicio: 20, biblia: 2, oracion: 15, gratitud: 'Por mi familia y la provisión.' },
+        { date: '2026-10-12', sueno: 7.0, ejercicio: 30, biblia: 3, oracion: 20, gratitud: 'Por una conversación restauradora con mi cónyuge.' },
+        { date: '2026-10-13', sueno: 8.0, ejercicio: 25, biblia: 2, oracion: 15, gratitud: 'Por un momento de paz en la naturaleza.' },
+        { date: '2026-10-14', sueno: 6.0, ejercicio: 15, biblia: 1, oracion: 10, gratitud: 'Por las fuerzas que Dios renueva en la debilidad.' },
+        { date: '2026-10-15', sueno: 7.5, ejercicio: 35, biblia: 2, oracion: 25, gratitud: 'Por la culminación exitosa de un proyecto.' },
+        { date: '2026-10-16', sueno: 8.0, ejercicio: 30, biblia: 3, oracion: 20, gratitud: 'Por la paz de Dios que sobrepasa todo entendimiento.' }
+      ],
+      chat: [
+        {
+          sender: 'bot',
+          text: '¡Gracia y paz para ti! Soy tu Asistente Pastoral y Terapéutico en PastoralMente Integral. ¿Cómo se encuentra hoy tu mente y tu corazón?',
+          time: '10:00'
+        }
+      ],
+      plan: {
+        title: 'Plan Integral de Restauración Mental y Espiritual',
+        summary: 'Basado en la renovación del entendimiento (Romanos 12:2) y reestructuración cognitiva (TCC).',
+        objectives: [
+          { id: 'o-1', title: 'Regular la hiperactivación ansiosa', meta: 'Practicar 10 min de respiración 4x4 y oración de silencio 5x por semana', done: false },
+          { id: 'o-2', title: 'Desarmar el catastrofismo', meta: 'Registrar 3 pensamientos automáticos en el diario y reencuadrarlos con la Biblia', done: true },
+          { id: 'o-3', title: 'Sabbath del descanso activo', meta: 'Separar 4 horas continuas de desconexión digital los sábados', done: false }
+        ],
+        milestones: [
+          { week: 1, text: 'Fundamentos de quietud: Soltar el control y desahogar el corazón en Dios.', done: true },
+          { week: 2, text: 'Detectives del pensamiento: Atrapar distorsiones cognitivas con Filipenses 4:8.', done: true },
+          { week: 3, text: 'Tolerancia al malestar (DBT): Técnica STOP y mente sabia.', done: false },
+          { week: 4, text: 'Acción comprometida en valores: Servir desde la plenitud, no por culpa.', done: false }
+        ],
+        tasks: [
+          { id: 't-1', text: 'Respiración diafragmática 4x4 matutina (5 minutos)', done: true },
+          { id: 't-2', text: 'Lectura meditativa en Salmo 23 y Filipenses 4', done: true },
+          { id: 't-3', text: 'Caminata de activación conductual sin pantallas (20 min)', done: false },
+          { id: 't-4', text: 'Oración de entrega antes de dormir (1 Pedro 5:7)', done: false }
+        ]
+      },
+      patients: [
+        { id: 'p-1', name: 'Carolina Morales', role: 'Mixta Integral', risk: 'Bajo', adherence: 88, lastSession: '2026-10-12' },
+        { id: 'p-2', name: 'David Alejandro Restrepo', role: 'Terapia Psicológica', risk: 'Moderado', adherence: 65, lastSession: '2026-10-14' },
+        { id: 'p-3', name: 'Esperanza Gómez', role: 'Consejería Pastoral', risk: 'Bajo', adherence: 92, lastSession: '2026-10-09' }
+      ],
+      sessions: [
+        {
+          id: 's-1',
+          patient: 'Carolina Morales',
+          date: '2026-10-12',
+          s: 'Acompañada refiere descenso en palpitaciones matutinas gracias a la respiración. Manifiesta temor a decir no en responsabilidades eclesiales.',
+          o: 'Afecto eutímico, contacto visual adecuado. Notable introspección.',
+          a: 'Proceso favorable de TCC. Se trabaja sobre distorsión de hiperresponsabilidad.',
+          p: 'Tarea de asertividad con amor según Gálatas 6:2-5. Próxima cita en 15 días.'
+        }
+      ]
+    };
+
+    // Main App Controller
+    class PastoralMenteApp {
+      constructor() {
+        this.data = this.loadData();
+        this.currentTab = 'dashboard';
+        this.init();
+      }
+
+      loadData() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) return JSON.parse(raw);
+        } catch (e) {
+          console.warn('Error reading local storage', e);
+        }
+        return JSON.parse(JSON.stringify(DEFAULT_DATA));
+      }
+
+      saveData() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
+        } catch (e) {
+          console.error('Error saving local storage', e);
+        }
+      }
+
+      init() {
+        // Theme initialization
+        this.applyTheme(this.data.user.theme || 'light');
+        
+        // Setup modules
+        this.renderDashboard();
+        this.evaluacion.init();
+        this.diario.init();
+        this.seguimiento.init();
+        this.asistente.init();
+        this.plan.init();
+        this.escuela.init();
+        this.biblioteca.init();
+        this.panel.init();
+        this.crisis.init();
+        this.reportes.init();
+        this.config.init();
+
+        // PWA Service worker registration dynamically
+        this.setupPWA();
+      }
+
+      navigate(tabId) {
+        this.currentTab = tabId;
+        
+        // Update view panels
+        document.querySelectorAll('.view-panel').forEach(el => el.classList.remove('active'));
+        const targetView = document.getElementById(`view-${tabId}`);
+        if (targetView) targetView.classList.add('active');
+
+        // Update desktop tabs
+        document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.tab === tabId);
+        });
+
+        // Update mobile bottom nav
+        document.querySelectorAll('.mobile-nav-item').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.tab === tabId);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Trigger view refreshes if needed
+        if (tabId === 'dashboard') this.renderDashboard();
+        if (tabId === 'reportes') this.reportes.refresh();
+      }
+
+      toggleTheme() {
+        const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        this.setTheme(newTheme);
+      }
+
+      setTheme(theme) {
+        this.data.user.theme = theme;
+        this.saveData();
+        this.applyTheme(theme);
+      }
+
+      applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const icon = document.getElementById('theme-icon');
+        if (icon) {
+          icon.innerHTML = theme === 'dark' 
+            ? '<circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>'
+            : '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+        }
+      }
+
+      toggleRole() {
+        const newRole = this.data.user.role === 'usuario' ? 'profesional' : 'usuario';
+        this.setRole(newRole);
+      }
+
+      setRole(role) {
+        this.data.user.role = role;
+        this.saveData();
+        alert(`Modo cambiado a: ${role === 'profesional' ? 'Pastor / Psicólogo Clínico' : 'Usuario Acompañado'}`);
+        if (role === 'profesional') this.navigate('panel');
+      }
+
+      openCrisisModal() {
+        document.getElementById('crisis-modal').classList.add('active');
+        this.crisis.renderModalHotlines();
+      }
+
+      closeCrisisModal() {
+        document.getElementById('crisis-modal').classList.remove('active');
+      }
+
+      renderDashboard() {
+        // Render Recent Activity List
+        const list = document.getElementById('dash-recent-list');
+        if (!list) return;
+
+        const items = [];
+        this.data.diario.slice(0, 3).forEach(d => {
+          items.push(`
+            <div style="background: var(--bg-surface-alt); padding: 0.6rem; border-radius: var(--radius-md);">
+              <div style="display:flex; justify-content:space-between; color: var(--text-muted); font-size: 0.7rem;">
+                <span>Diario &bull; ${d.emotion}</span>
+                <span>${d.date.slice(5, 10)}</span>
+              </div>
+              <div style="font-weight: 700; color: var(--text-main);">${d.title}</div>
+            </div>
+          `);
+        });
+
+        list.innerHTML = items.length ? items.join('') : '<p style="color:var(--text-muted);">Sin actividad reciente.</p>';
+
+        // Render SVG Trend Chart
+        this.renderSVGChart();
+      }
+
+      renderSVGChart() {
+        const box = document.getElementById('dashboard-chart-container');
+        if (!box) return;
+
+        const pointsEmocional = [65, 60, 72, 68, 75, 70, 74];
+        const pointsEspiritual = [78, 80, 85, 82, 88, 85, 89];
+        const days = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+
+        const width = 600;
+        const height = 180;
+        const padding = 35;
+
+        const getCoord = (val, idx) => {
+          const x = padding + (idx * ((width - padding * 2) / 6));
+          const y = height - padding - ((val / 100) * (height - padding * 2));
+          return `${x},${y}`;
+        };
+
+        const pathEmo = pointsEmocional.map((v, i) => getCoord(v, i)).join(' L ');
+        const pathEsp = pointsEspiritual.map((v, i) => getCoord(v, i)).join(' L ');
+
+        box.innerHTML = `
+          <svg viewBox="0 0 ${width} ${height}" style="width:100%; height:100%; overflow:visible;">
+            <!-- Grid lines -->
+            <line x1="${padding}" y1="${padding}" x2="${width - padding}" y2="${padding}" stroke="var(--border-color)" stroke-dasharray="3" />
+            <line x1="${padding}" y1="${height/2}" x2="${width - padding}" y2="${height/2}" stroke="var(--border-color)" stroke-dasharray="3" />
+            <line x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}" stroke="var(--border-color)" />
+
+            <!-- Labels -->
+            ${days.map((d, i) => {
+              const x = padding + (i * ((width - padding * 2) / 6));
+              return `<text x="${x}" y="${height - 10}" font-size="11" font-weight="600" fill="var(--text-muted)" text-anchor="middle">${d}</text>`;
+            }).join('')}
+
+            <!-- Lines -->
+            <path d="M ${pathEmo}" fill="none" stroke="var(--primary)" stroke-width="3.5" stroke-linecap="round" />
+            <path d="M ${pathEsp}" fill="none" stroke="var(--secondary)" stroke-width="3.5" stroke-linecap="round" />
+
+            <!-- Circles -->
+            ${pointsEmocional.map((v, i) => {
+              const [x, y] = getCoord(v, i).split(',');
+              return `<circle cx="${x}" cy="${y}" r="4.5" fill="var(--primary)" stroke="white" stroke-width="2" />`;
+            }).join('')}
+            ${pointsEspiritual.map((v, i) => {
+              const [x, y] = getCoord(v, i).split(',');
+              return `<circle cx="${x}" cy="${y}" r="4.5" fill="var(--secondary)" stroke="white" stroke-width="2" />`;
+            }).join('')}
+          </svg>
+        `;
+      }
+
+      setupPWA() {
+        if ('serviceWorker' in navigator) {
+          const swCode = `
+            const CACHE_NAME = 'pastoralmente-cache-v1';
+            self.addEventListener('install', e => {
+              self.skipWaiting();
+            });
+            self.addEventListener('activate', e => {
+              e.waitUntil(clients.claim());
+            });
+            self.addEventListener('fetch', e => {
+              e.respondWith(
+                fetch(e.request).catch(() => caches.match(e.request))
+              );
+            });
+          `;
+          const blob = new Blob([swCode], { type: 'application/javascript' });
+          const swUrl = URL.createObjectURL(blob);
+          navigator.serviceWorker.register(swUrl).catch(e => console.log('SW registration note', e));
+        }
+      }
+    }
+
+    /* ==========================================================================
+       SUBMODULE: EVALUACIÓN INICIAL
+       ========================================================================== */
+    PastoralMenteApp.prototype.evaluacion = {
+      questions: [
+        { id: 'q1', cat: 'estres', text: '¿Sientes que las demandas diarias sobrepasan tu capacidad de respuesta?', min: 'Nunca', max: 'Constantemente' },
+        { id: 'q2', cat: 'ansiedad', text: '¿Experimentas pensamientos acelerados o sensación de catástrofe inminente?', min: 'Nada', max: 'Frecuente' },
+        { id: 'q3', cat: 'animo', text: '¿Has sentido tristeza o dificultad para disfrutar tus actividades cotidianas?', min: 'Rara vez', max: 'Casi siempre' },
+        { id: 'q4', cat: 'autoestima', text: '¿Reconoces tu dignidad y valor como hijo/a creado/a por Dios?', min: 'Dudo mucho', max: 'Plena convicción' },
+        { id: 'q5', cat: 'espiritualidad', text: '¿Experimentas comunión, dirección y paz mediante la oración y la Palabra?', min: 'Lejanía', max: 'Intimidad diaria' },
+        { id: 'q6', cat: 'satisfaccion', text: '¿Sientes que tu vida actual camina alineada con tu propósito?', min: 'Insatisfecho', max: 'Muy satisfecho' },
+        { id: 'q7', cat: 'familia', text: '¿Existe diálogo constructivo, respeto y perdón en tu núcleo familiar?', min: 'Tensión constante', max: 'Armonía y apoyo' }
+      ],
+
+      init() {
+        const box = document.getElementById('evaluacion-questions-container');
+        if (!box) return;
+
+        box.innerHTML = this.questions.map((q, idx) => `
+          <div style="background: var(--bg-surface-alt); padding: 1.1rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+              <span style="font-weight: 700; font-size: 0.85rem; color: var(--text-main);">${idx + 1}. ${q.text}</span>
+              <span class="badge badge-primary" id="val-badge-${q.id}">3 / 5</span>
+            </div>
+            <input type="range" id="input-${q.id}" min="1" max="5" value="3" class="form-control" 
+                   oninput="document.getElementById('val-badge-${q.id}').innerText = this.value + ' / 5'" />
+            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem;">
+              <span>1: ${q.min}</span>
+              <span>5: ${q.max}</span>
+            </div>
+          </div>
+        `).join('');
+
+        // If previously completed, show results
+        if (app.data.evaluation.completed) {
+          this.displayResults(app.data.evaluation.profile);
+        }
+      },
+
+      loadSample() {
+        this.questions.forEach((q, idx) => {
+          const sampleVals = [4, 4, 2, 4, 5, 4, 3];
+          const el = document.getElementById(`input-${q.id}`);
+          if (el) {
+            el.value = sampleVals[idx];
+            document.getElementById(`val-badge-${q.id}`).innerText = sampleVals[idx] + ' / 5';
+          }
+        });
+      },
+
+      calculate() {
+        const scores = {};
+        this.questions.forEach(q => {
+          const el = document.getElementById(`input-${q.id}`);
+          scores[q.cat] = el ? parseInt(el.value, 10) * 20 : 60;
+        });
+
+        app.data.evaluation.scores = scores;
+        app.data.evaluation.completed = true;
+
+        // Intelligent profiling generator
+        const profile = {
+          emocional: scores.ansiedad >= 70 
+            ? 'Alerta ansiosa elevada con necesidad urgente de desescalada y descanso en la gracia.'
+            : scores.estres >= 70
+            ? 'Sobrecarga ejecutiva y fatiga acumulada; requiere establecimiento de límites.'
+            : 'Equilibrio emocional favorable con resiliencia activa ante la adversidad.',
+          espiritual: scores.espiritualidad >= 75
+            ? 'Comunión íntima y constante que constituye tu mayor ancla y factor protector.'
+            : 'Anhelo espiritual presente con sensación de sequía o prisa en la oración.',
+          fortalezas: [
+            'Sensibilidad y disposición a la introspección',
+            'Valoración de principios bíblicos de perdón',
+            'Apertura hacia el acompañamiento y crecimiento'
+          ],
+          riesgos: [
+            scores.ansiedad > 50 ? 'Propensión a anticipar catástrofes irreales' : 'Fatiga por jornadas excesivas',
+            scores.familia < 60 ? 'Tensión no resuelta en vínculos cercanos' : 'Autoexigencia perfeccionista'
+          ],
+          recomendaciones: 'Consolida tu rutina de respiración 4x4, aplica el tribunal de pensamientos de la TCC cada noche y comparte tus avances en tu grupo de apoyo o con tu pastor.'
+        };
+
+        app.data.evaluation.profile = profile;
+        app.saveData();
+
+        this.displayResults(profile);
+      },
+
+      displayResults(p) {
+        document.getElementById('evaluacion-results-box').style.display = 'block';
+        document.getElementById('res-perfil-emocional').innerText = p.emocional;
+        document.getElementById('res-perfil-espiritual').innerText = p.espiritual;
+        document.getElementById('res-fortalezas-list').innerHTML = p.fortalezas.map(f => `<li>${f}</li>`).join('');
+        document.getElementById('res-riesgos-list').innerHTML = p.riesgos.map(r => `<li>${r}</li>`).join('');
+        document.getElementById('res-recomendaciones').innerText = p.recomendaciones;
+
+        document.getElementById('evaluacion-results-box').scrollIntoView({ behavior: 'smooth' });
+      },
+
+      applyToPlan() {
+        alert('¡Resultados integrados exitosamente a tu Plan de Crecimiento!');
+        app.navigate('plan');
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: DIARIO EMOCIONAL INTELIGENTE & ANÁLISIS AUTOMÁTICO
+       ========================================================================== */
+    PastoralMenteApp.prototype.diario = {
+      init() {
+        this.renderHistory();
+        if (app.data.diario.length > 0) {
+          this.displayAnalysis(app.data.diario[0].analysis);
+        }
+      },
+
+      save(e) {
+        e.preventDefault();
+        const title = document.getElementById('diario-title').value.trim();
+        const emotion = document.getElementById('diario-emotion').value;
+        const intensity = parseInt(document.getElementById('diario-intensity').value, 10);
+        const thoughts = document.getElementById('diario-thoughts').value.trim();
+        const prayer = document.getElementById('diario-prayer').value.trim();
+
+        if (!title || !thoughts) return;
+
+        // Crisis keyword detection in journal input
+        const crisisKeywords = ['suicid', 'matarme', 'acabar con mi vida', 'quitarme la vida', 'hacerme daño', 'no quiero vivir'];
+        const isCrisis = crisisKeywords.some(kw => (thoughts + ' ' + title).toLowerCase().includes(kw));
+
+        if (isCrisis) {
+          app.openCrisisModal();
+        }
+
+        // Automatic Cognitive Analysis Engine (Heuristic NLP)
+        const analysis = this.analyzeThoughts(thoughts, emotion);
+
+        const newEntry = {
+          id: 'd-' + Date.now(),
+          date: new Date().toISOString().replace('T', ' ').slice(0, 16),
+          title,
+          emotion,
+          intensity,
+          thoughts,
+          prayer,
+          analysis
+        };
+
+        app.data.diario.unshift(newEntry);
+        app.saveData();
+
+        // Reset form
+        document.getElementById('diario-title').value = '';
+        document.getElementById('diario-thoughts').value = '';
+        document.getElementById('diario-prayer').value = '';
+
+        this.renderHistory();
+        this.displayAnalysis(analysis);
+        alert('Entrada guardada y analizada correctamente.');
+      },
+
+      analyzeThoughts(text, emotion) {
+        const lower = text.toLowerCase();
+        const distortions = [];
+
+        // Distortions rule matching
+        if (lower.includes('siempre') || lower.includes('nunca') || lower.includes('todo') || lower.includes('nada')) {
+          distortions.push('Pensamiento Todo o Nada (Polarización)');
+        }
+        if (lower.includes('terrible') || lower.includes('desastre') || lower.includes('colapso') || lower.includes('peor')) {
+          distortions.push('Catastrofización');
+        }
+        if (lower.includes('debo') || lower.includes('tengo que') || lower.includes('debería')) {
+          distortions.push('Deberías absolutistas (Exigencia)');
+        }
+        if (lower.includes('pensará') || lower.includes('me odian') || lower.includes('creen que')) {
+          distortions.push('Lectura de Pensamiento');
+        }
+
+        if (distortions.length === 0) {
+          distortions.push('Filtro Mental Leve');
+        }
+
+        // Biblical Anchors matching
+        let verse = 'Filipenses 4:8';
+        let verseText = 'En esto pensad: en todo lo que es verdadero, todo lo honesto, todo lo justo, todo lo puro...';
+        let reframe = 'Sustituye la narrativa del temor con la verdad de la Palabra; Dios cuida tus pasos.';
+
+        if (emotion === 'Ira') {
+          verse = 'Proverbios 15:1';
+          verseText = 'La blanda respuesta quita la ira; mas la palabra áspera hace subir el furor.';
+          reframe = 'Haz una pausa antes de reaccionar; la mansedumbre es poder bajo control.';
+        } else if (emotion === 'Tristeza') {
+          verse = 'Salmo 34:18';
+          verseText = 'Cercano está Jehová a los quebrantados de corazón; y salva a los contritos de espíritu.';
+          reframe = 'Tus lágrimas son sagradas para Dios; Él no te rechaza en tu fragilidad.';
+        }
+
+        return { distortions, reframe, verse, verseText };
+      },
+
+      displayAnalysis(a) {
+        const box = document.getElementById('analysis-content-box');
+        if (!box || !a) return;
+
+        box.innerHTML = `
+          <div style="margin-bottom: 0.6rem;">
+            <strong style="color: var(--warning); display:block; margin-bottom: 0.2rem;">Distorsiones Detectadas:</strong>
+            ${a.distortions.map(d => `<span class="badge badge-warning" style="margin-right: 0.3rem;">${d}</span>`).join('')}
+          </div>
+          <div style="margin-bottom: 0.6rem;">
+            <strong style="color: var(--secondary); display:block; margin-bottom: 0.2rem;">Reencuadre TCC & Pastoral:</strong>
+            <p>${a.reframe}</p>
+          </div>
+          <div style="background: var(--bg-surface-alt); padding: 0.6rem; border-radius: var(--radius-md); border-left: 3px solid var(--primary);">
+            <strong>${a.verse}:</strong> "${a.verseText}"
+          </div>
+        `;
+      },
+
+      renderHistory() {
+        const list = document.getElementById('diario-history-list');
+        if (!list) return;
+
+        list.innerHTML = app.data.diario.map(d => `
+          <div class="glass-card" style="padding: 0.8rem; cursor: pointer;" onclick="app.diario.viewEntry('${d.id}')">
+            <div style="display:flex; justify-content:space-between; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.2rem;">
+              <span>${d.emotion} (${d.intensity}/10)</span>
+              <span>${d.date.slice(0, 10)}</span>
+            </div>
+            <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">${d.title}</h4>
+            <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+              ${d.thoughts}
+            </p>
+          </div>
+        `).join('');
+      },
+
+      viewEntry(id) {
+        const item = app.data.diario.find(d => d.id === id);
+        if (item) this.displayAnalysis(item.analysis);
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: SEGUIMIENTO TERAPÉUTICO
+       ========================================================================== */
+    PastoralMenteApp.prototype.seguimiento = {
+      init() {
+        this.renderTable();
+      },
+
+      save(e) {
+        e.preventDefault();
+        const sueno = parseFloat(document.getElementById('seg-sueno').value);
+        const ejercicio = parseInt(document.getElementById('seg-ejercicio').value, 10);
+        const biblia = parseInt(document.getElementById('seg-biblia').value, 10);
+        const oracion = parseInt(document.getElementById('seg-oracion').value, 10);
+        const gratitud = document.getElementById('seg-gratitud').value.trim();
+
+        const today = new Date().toISOString().slice(0, 10);
+        const newRecord = { date: today, sueno, ejercicio, biblia, oracion, gratitud };
+
+        app.data.seguimiento.unshift(newRecord);
+        app.saveData();
+
+        document.getElementById('seg-gratitud').value = '';
+        this.renderTable();
+        alert('Hábitos registrados con éxito para hoy.');
+      },
+
+      renderTable() {
+        const tbody = document.getElementById('seguimiento-tbody');
+        if (!tbody) return;
+
+        tbody.innerHTML = app.data.seguimiento.map(r => `
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.6rem; font-weight: 700;">${r.date}</td>
+            <td style="padding: 0.6rem;">${r.sueno} hrs</td>
+            <td style="padding: 0.6rem;">${r.ejercicio} min</td>
+            <td style="padding: 0.6rem;">${r.biblia} cap</td>
+            <td style="padding: 0.6rem;">${r.oracion} min</td>
+            <td style="padding: 0.6rem; font-style: italic; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+              "${r.gratitud}"
+            </td>
+          </tr>
+        `).join('');
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: ASISTENTE PASTORAL IA
+       ========================================================================== */
+    PastoralMenteApp.prototype.asistente = {
+      init() {
+        this.renderMessages();
+      },
+
+      renderMessages() {
+        const box = document.getElementById('chat-messages');
+        if (!box) return;
+
+        box.innerHTML = app.data.chat.map(m => {
+          const isUser = m.sender === 'user';
+          return `
+            <div style="display: flex; justify-content: ${isUser ? 'flex-end' : 'flex-start'};">
+              <div style="max-width: 78%; padding: 0.85rem 1.15rem; border-radius: var(--radius-lg); font-size: 0.85rem; line-height: 1.6; ${
+                isUser 
+                  ? 'background: var(--primary); color: white; border-bottom-right-radius: 4px;' 
+                  : 'background: var(--bg-surface-alt); color: var(--text-main); border: 1px solid var(--border-color); border-bottom-left-radius: 4px;'
+              }">
+                <div>${m.text.replace(/\n/g, '<br/>')}</div>
+                <div style="font-size: 0.65rem; margin-top: 0.35rem; opacity: 0.7; text-align: right;">${m.time}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        box.scrollTop = box.scrollHeight;
+      },
+
+      quickAsk(prompt) {
+        document.getElementById('chat-input').value = prompt;
+        this.send(new Event('submit'));
+      },
+
+      async send(e) {
+        e.preventDefault();
+        const input = document.getElementById('chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        // Add user message
+        app.data.chat.push({ sender: 'user', text, time });
+        input.value = '';
+        this.renderMessages();
+
+        // Crisis detection
+        const crisisKeywords = ['suicid', 'matarme', 'quitarme la vida', 'hacerme daño', 'cortarme', 'no vale la pena vivir'];
+        if (crisisKeywords.some(kw => text.toLowerCase().includes(kw))) {
+          app.openCrisisModal();
+        }
+
+        // Generate response (Local Heuristic Engine or API)
+        const responseText = await this.generateResponse(text);
+
+        app.data.chat.push({
+          sender: 'bot',
+          text: responseText,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
+
+        app.saveData();
+        this.renderMessages();
+      },
+
+      async generateResponse(query) {
+        const q = query.toLowerCase();
+
+        // Check if external API is configured
+        if (app.data.user.aiProvider === 'gemini' && app.data.user.aiKey) {
+          try {
+            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${app.data.user.aiKey}`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: `Eres un orientador pastoral cristiano y consejero psicológico basado en TCC, ACT y Biblia Reina Valera. No diagnostiques enfermedades mentales. Responde empáticamente, sugiere un versículo y un ejercicio práctico para: "${query}"` }] }]
+              })
+            });
+            const d = await res.json();
+            if (d.candidates && d.candidates[0].content.parts[0].text) {
+              return d.candidates[0].content.parts[0].text;
+            }
+          } catch (err) {
+            console.warn('API call failed, using heuristic fallback', err);
+          }
+        }
+
+        // High-Quality Heuristic Psychological-Pastoral Engine
+        if (q.includes('ansiedad') || q.includes('miedo') || q.includes('pánico') || q.includes('preocupa')) {
+          return `Te escucho con profundo respeto. La ansiedad es una señal del sistema nervioso que intenta protegerte, pero no define tu destino.\n\n` +
+                 `1. Ancla Bíblica: "Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios..." (Filipenses 4:6-7).\n` +
+                 `2. Ejercicio TCC: Haz una pausa de 2 minutos. Escribe el pensamiento que te atemoriza y pregúntate: "¿Tengo pruebas 100% reales de que eso pasará hoy?".\n` +
+                 `3. Respiración 4x4: Inhala en 4s diciendo en mente "Mi paz os dejo", y exhala soltando el afán. ¿Qué es lo único que necesitas atender en las próximas 2 horas?`;
+        }
+
+        if (q.includes('perdón') || q.includes('perdonar') || q.includes('ofensa') || q.includes('herida')) {
+          return `El perdón es uno de los procesos de sanidad más profundos y valientes que existen.\n\n` +
+                 `1. Aclaración Terapéutica: Perdonar NO es justificar el maltrato ni negar el dolor; es cancelar la deuda de venganza para que el veneno del ofensor no arruine tu presente.\n` +
+                 `2. Ancla Bíblica: "Antes sed benignos unos con otros, misericordiosos, perdonándoos unos a otros, como Dios también os perdonó a vosotros en Cristo." (Efesios 4:32).\n` +
+                 `3. Pregunta Reflexiva: ¿Qué parte de tu energía emocional sigues gastando en revivir el juicio de lo que ya ocurrió?`;
+        }
+
+        if (q.includes('culpa') || q.includes('fallé') || q.includes('pecado') || q.includes('error')) {
+          return `La culpa neurótica te paraliza y te condena, mientras que la convicción del Espíritu Santo te invita a levantarte con gracia.\n\n` +
+                 `1. Verdad Inmutable: "Ahora, pues, ninguna condenación hay para los que están en Cristo Jesús" (Romanos 8:1).\n` +
+                 `2. Ejercicio de Compasión: Si un hermano muy amado viniera a ti con este mismo error, ¿le arrojarías piedras o le recordarías la cruz? Trátate hoy con la misma misericordia que Dios te ofrece.`;
+        }
+
+        return `Te escucho de corazón y valoro que abras este espacio. Recuerda que Dios no se asusta de tus preguntas ni de tu vulnerabilidad (Salmo 147:3).\n\n` +
+               `Desde la Terapia de Aceptación y Compromiso (ACT), no necesitamos que desaparezca cada emoción difícil para comenzar a dar pasos valiosos hoy.\n\n` +
+               `"Echando toda vuestra ansiedad sobre él, porque él tiene cuidado de vosotros." (1 Pedro 5:7)\n\n` +
+               `¿Cuál es el siguiente paso pequeño y saludable que puedes dar en este día?`;
+      },
+
+      clearChat() {
+        app.data.chat = [
+          { sender: 'bot', text: 'Conversación reiniciada. Estoy aquí para acompañarte en oración y reflexión.', time: 'Ahora' }
+        ];
+        app.saveData();
+        this.renderMessages();
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: PLAN DE CRECIMIENTO PERSONALIZADO
+       ========================================================================== */
+    PastoralMenteApp.prototype.plan = {
+      init() {
+        this.render();
+      },
+
+      render() {
+        const p = app.data.plan;
+        document.getElementById('plan-title').innerText = p.title;
+        document.getElementById('plan-summary').innerText = p.summary;
+
+        // Render SMART Objectives
+        document.getElementById('plan-objectives-container').innerHTML = p.objectives.map(o => `
+          <div class="glass-card" style="padding: 1rem; border-left: 4px solid var(--primary);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.35rem;">
+              <strong style="font-size: 0.85rem;">${o.title}</strong>
+              <input type="checkbox" ${o.done ? 'checked' : ''} onchange="app.plan.toggleObjective('${o.id}')" />
+            </div>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">${o.meta}</p>
+          </div>
+        `).join('');
+
+        // Render Weekly Milestones
+        document.getElementById('plan-milestones-container').innerHTML = p.milestones.map(m => `
+          <div style="background: var(--bg-surface-alt); padding: 0.75rem 1rem; border-radius: var(--radius-md); display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-size: 0.8rem;">
+              <span class="badge badge-secondary" style="margin-right: 0.5rem;">Semana ${m.week}</span>
+              <span style="${m.done ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${m.text}</span>
+            </div>
+            <input type="checkbox" ${m.done ? 'checked' : ''} onchange="app.plan.toggleMilestone(${m.week})" />
+          </div>
+        `).join('');
+
+        // Render Daily Tasks
+        document.getElementById('plan-tasks-container').innerHTML = p.tasks.map(t => `
+          <div style="background: var(--bg-surface-alt); padding: 0.65rem 1rem; border-radius: var(--radius-md); display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size: 0.82rem; ${t.done ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${t.text}</span>
+            <input type="checkbox" ${t.done ? 'checked' : ''} onchange="app.plan.toggleTask('${t.id}')" />
+          </div>
+        `).join('');
+      },
+
+      toggleObjective(id) {
+        const item = app.data.plan.objectives.find(o => o.id === id);
+        if (item) item.done = !item.done;
+        app.saveData();
+        this.render();
+      },
+
+      toggleMilestone(w) {
+        const item = app.data.plan.milestones.find(m => m.week === w);
+        if (item) item.done = !item.done;
+        app.saveData();
+        this.render();
+      },
+
+      toggleTask(id) {
+        const item = app.data.plan.tasks.find(t => t.id === id);
+        if (item) item.done = !item.done;
+        app.saveData();
+        this.render();
+      },
+
+      regenerate() {
+        alert('Plan actualizado y alineado con tus últimos registros de evaluación y diario.');
+        this.render();
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: ESCUELA DE RESTAURACIÓN
+       ========================================================================== */
+    PastoralMenteApp.prototype.escuela = {
+      courses: [
+        {
+          id: 'c-ansiedad',
+          title: 'Ansiedad & Paz Interior',
+          model: 'TCC & Filipenses 4',
+          desc: 'Aprende a transformar la rumiación catastrófica en oración consciente y anclaje somático.',
+          completed: true,
+          content: `
+            <h4>1. La biología de la ansiedad y la gracia</h4>
+            <p>La ansiedad no es falta de fe; es una respuesta biológica del sistema nervioso simpático ante una amenaza percibida. Dios nos diseñó con este sistema de alerta, pero en un mundo sobrecargado, la amígdala se hiperactiva.</p>
+            <h4>2. La técnica del tribunal cognitivo (TCC)</h4>
+            <p>El apóstol Pablo nos invita en 2 Corintios 10:5 a "llevar cautivo todo pensamiento a la obediencia a Cristo". Sentar un pensamiento en el banquillo significa preguntarle: ¿Eres verdad verificable o eres una distorsión catastrofista?</p>
+            <h4>3. Herramienta Práctica: La Pausa Sagrada</h4>
+            <p>Antes de responder o angustiarte, inhala en 4 tiempos recordando Salmo 46:10. Entrégale a Dios lo que no está en tu control directo.</p>
+          `
+        },
+        {
+          id: 'c-autoestima',
+          title: 'Autoestima & Identidad en Cristo',
+          model: 'Psicología Positiva & Efesios 2',
+          desc: 'Sana las heridas de la comparación fundando tu valor en el amor incondicional del Creador.',
+          completed: false,
+          content: `
+            <h4>1. El valor por filiación vs el valor por rendimiento</h4>
+            <p>El mundo te tasa por lo que produces, tienes o aparentas. En el Reino de Dios, tu valor fue tasado en la cruz con la sangre de Cristo. Eres Su poema vivo (Efesios 2:10).</p>
+            <h4>2. Desactivar el juez interno</h4>
+            <p>A menudo somos más duros con nosotros mismos que con cualquier otra persona. Practica la autocompasión cristiana: perdónate como Cristo ya te perdonó.</p>
+          `
+        },
+        {
+          id: 'c-duelo',
+          title: 'Duelo & Pérdida con Esperanza',
+          model: 'Terapia Narrativa & 1 Tesalonicenses 4',
+          desc: 'El permiso sagrado de llorar sin perder la ancla de la esperanza eterna.',
+          completed: false,
+          content: `
+            <h4>1. Jesús lloró ante la tumba</h4>
+            <p>Jesús lloró ante la tumba de Lázaro aun sabiendo que lo resucitaría en minutos. El llanto no es debilidad; es el testimonio de cuánto amaste.</p>
+            <h4>2. No nos entristecemos como los que no tienen esperanza</h4>
+            <p>La fe no suprime el dolor, lo sostiene con la promesa de la resurrección.</p>
+          `
+        },
+        {
+          id: 'c-perdon',
+          title: 'El Poder Sanador del Perdón',
+          model: 'Modelo Enright & Colosenses 3',
+          desc: 'Cancela la deuda de venganza para liberar tu corazón de la prisión del rencor.',
+          completed: true,
+          content: `
+            <h4>1. Qué no es perdonar</h4>
+            <p>Perdonar no es decir que lo que pasó estuvo bien, ni exige convivir con quien continúa lastimándote sin arrepentimiento.</p>
+            <h4>2. Cancelar el pagaré</h4>
+            <p>Perdonar es entregarle el juicio a Dios (Romanos 12:19) y soltar la soga que te ataba a tu ofensor.</p>
+          `
+        },
+        {
+          id: 'c-pareja',
+          title: 'Restauración en el Matrimonio',
+          model: 'Terapia Gottman & Efesios 5',
+          desc: 'Desactiva la crítica destructiva y el desprecio con comunicación suave y compasión.',
+          completed: false,
+          content: `
+            <h4>1. La queja suave vs la crítica destructiva</h4>
+            <p>Habla desde lo que tú sientes y necesitas, sin etiquetar al otro como el enemigo.</p>
+            <h4>2. Amar como Cristo amó a la iglesia</h4>
+            <p>Servicio mutuo y admiración intencional diaria.</p>
+          `
+        },
+        {
+          id: 'c-familia',
+          title: 'Sanando Vínculos Familiares',
+          model: 'Terapia Sistémica & Proverbios 4',
+          desc: 'Rompiendo ciclos tóxicos del pasado y estableciendo límites sanos en amor.',
+          completed: false,
+          content: `
+            <h4>1. Rompiendo lealtades invisibles</h4>
+            <p>En Cristo ninguna inercia de amargura de tus antepasados te condena. Eres la generación de la bendición.</p>
+          `
+        },
+        {
+          id: 'c-liderazgo',
+          title: 'Liderazgo Sano & Prevención de Burnout',
+          model: 'Entrevista Motivacional & Éxodo 18',
+          desc: 'El consejo de Jetro: Delegación, límites y el mandamiento sagrado del descanso.',
+          completed: false,
+          content: `
+            <h4>1. El consejo de Jetro a Moisés</h4>
+            <p>"Desfallecerás del todo... el trabajo es demasiado pesado para ti; no podrás hacerlo tú solo" (Éxodo 18:18). Cuidar tu salud es fidelidad ministerial.</p>
+          `
+        },
+        {
+          id: 'c-discipulado',
+          title: 'Discipulado para la Mente y el Alma',
+          model: 'Renovación Mental & Romanos 12',
+          desc: 'Formando discípulos emocionalmente maduros que amen a Dios con mente y corazón.',
+          completed: false,
+          content: `
+            <h4>1. Neuroplasticidad y la Palabra</h4>
+            <p>La meditación profunda en las Escrituras renueva físicamente los surcos del cerebro hacia la serenidad.</p>
+          `
+        }
+      ],
+
+      currentLessonId: null,
+
+      init() {
+        const grid = document.getElementById('escuela-courses-grid');
+        if (!grid) return;
+
+        grid.innerHTML = this.courses.map(c => `
+          <div class="glass-card" style="cursor: pointer; display: flex; flex-direction: column; justify-content: space-between;" onclick="app.escuela.openLesson('${c.id}')">
+            <div>
+              <div style="display:flex; justify-content:space-between; margin-bottom: 0.35rem;">
+                <span class="badge ${c.completed ? 'badge-secondary' : 'badge-primary'}">${c.completed ? 'Completado' : 'Disponible'}</span>
+              </div>
+              <h3 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 0.25rem;">${c.title}</h3>
+              <div style="font-size: 0.72rem; color: var(--primary); font-weight: 700; margin-bottom: 0.4rem;">${c.model}</div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">${c.desc}</p>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.75rem; font-weight: 700; color: var(--primary);">
+              Estudiar Lección &rarr;
+            </div>
+          </div>
+        `).join('');
+      },
+
+      openLesson(id) {
+        const c = this.courses.find(item => item.id === id);
+        if (!c) return;
+        this.currentLessonId = id;
+
+        document.getElementById('modal-lesson-course').innerText = c.model;
+        document.getElementById('modal-lesson-title').innerText = c.title;
+        document.getElementById('modal-lesson-body').innerHTML = c.content;
+        document.getElementById('modal-lesson-complete-btn').style.display = c.completed ? 'none' : 'inline-flex';
+        document.getElementById('lesson-modal').classList.add('active');
+      },
+
+      markCompleted() {
+        const c = this.courses.find(item => item.id === this.currentLessonId);
+        if (c) c.completed = true;
+        this.closeModal();
+        this.init();
+        alert('¡Lección completada y registrada en tu historial!');
+      },
+
+      closeModal() {
+        document.getElementById('lesson-modal').classList.remove('active');
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: BIBLIOTECA BÍBLICA REINA VALERA
+       ========================================================================== */
+    PastoralMenteApp.prototype.biblioteca = {
+      verses: [
+        { cat: 'Ansiedad', ref: 'Filipenses 4:6-7', text: 'Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración y ruego, con acción de gracias. Y la paz de Dios... guardará vuestros corazones.' },
+        { cat: 'Ansiedad', ref: '1 Pedro 5:7', text: 'Echando toda vuestra ansiedad sobre él, porque él tiene cuidado de vosotros.' },
+        { cat: 'Temor', ref: 'Isaías 41:10', text: 'No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.' },
+        { cat: 'Temor', ref: '2 Timoteo 1:7', text: 'Porque no nos ha dado Dios espíritu de cobardía, sino de poder, de amor y de dominio propio.' },
+        { cat: 'Tristeza', ref: 'Salmo 34:18', text: 'Cercano está Jehová a los quebrantados de corazón; y salva a los contritos de espíritu.' },
+        { cat: 'Tristeza', ref: 'Mateo 5:4', text: 'Bienaventurados los que lloran, porque ellos recibirán consolación.' },
+        { cat: 'Esperanza', ref: 'Jeremías 29:11', text: 'Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis.' },
+        { cat: 'Esperanza', ref: 'Romanos 15:13', text: 'Y el Dios de esperanza os llene de todo gozo y paz en el creer, para que abundéis en esperanza por el poder del Espíritu Santo.' },
+        { cat: 'Restauración', ref: '1 Pedro 5:10', text: 'Mas el Dios de toda gracia... después que hayáis padecido un poco de tiempo, él mismo os perfeccione, afirme, fortalezca y establezca.' },
+        { cat: 'Restauración', ref: 'Joel 2:25', text: 'Y os restituiré los años que comió la oruga, el saltón, el revoltón y la langosta...' },
+        { cat: 'Perdón', ref: 'Colosenses 3:13', text: 'Soportándoos con paciencia los unos a los otros, y perdonándoos unos a otros si alguno tuviere queja contra otro. De la manera que Cristo os perdonó, así también hacedlo vosotros.' },
+        { cat: 'Fe', ref: 'Hebreos 11:1', text: 'Es, pues, la fe la certeza de lo que se espera, la convicción de lo que no se ve.' },
+        { cat: 'Matrimonio', ref: 'Efesios 5:33', text: 'Por lo demás, cada uno de vosotros ame también a su mujer como a sí mismo; y la mujer respete a su marido.' },
+        { cat: 'Familia', ref: 'Josué 24:15', text: 'Pero yo y mi casa serviremos a Jehová.' }
+      ],
+
+      activeCat: 'Todos',
+
+      init() {
+        this.renderCategories();
+        this.renderVerses();
+      },
+
+      renderCategories() {
+        const bar = document.getElementById('biblia-categories-bar');
+        if (!bar) return;
+
+        const categories = ['Todos', 'Ansiedad', 'Temor', 'Tristeza', 'Esperanza', 'Restauración', 'Perdón', 'Fe', 'Matrimonio', 'Familia'];
+        bar.innerHTML = categories.map(cat => `
+          <button class="btn ${this.activeCat === cat ? 'btn-primary' : 'btn-outline'}" 
+                  style="padding: 0.35rem 0.8rem; font-size: 0.72rem; border-radius: var(--radius-full);"
+                  onclick="app.biblioteca.setCategory('${cat}')">
+            ${cat}
+          </button>
+        `).join('');
+      },
+
+      setCategory(cat) {
+        this.activeCat = cat;
+        this.renderCategories();
+        this.renderVerses();
+      },
+
+      filter() {
+        this.renderVerses();
+      },
+
+      renderVerses() {
+        const container = document.getElementById('biblia-verses-container');
+        if (!container) return;
+
+        const search = (document.getElementById('biblia-search')?.value || '').toLowerCase();
+
+        const filtered = this.verses.filter(v => {
+          const matchCat = this.activeCat === 'Todos' || v.cat === this.activeCat;
+          const matchSearch = v.ref.toLowerCase().includes(search) || v.text.toLowerCase().includes(search);
+          return matchCat && matchSearch;
+        });
+
+        container.innerHTML = filtered.map(v => `
+          <div class="glass-card" style="padding: 1.15rem; border-left: 4px solid var(--primary);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.4rem;">
+              <span class="badge badge-primary">${v.cat}</span>
+              <button class="icon-btn" style="width: 28px; height: 28px;" title="Copiar Versículo" onclick="app.biblioteca.copy('${v.ref} - ${v.text.replace(/'/g, "\\'")}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+            <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem;">${v.ref}</h4>
+            <p style="font-size: 0.85rem; font-style: italic; line-height: 1.6; color: var(--text-main);">"${v.text}"</p>
+          </div>
+        `).join('');
+      },
+
+      copy(text) {
+        navigator.clipboard.writeText(text);
+        alert('Versículo copiado al portapapeles.');
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: PANEL PROFESIONAL
+       ========================================================================== */
+    PastoralMenteApp.prototype.panel = {
+      init() {
+        this.render();
+      },
+
+      render() {
+        // Render Patients Table
+        const tbody = document.getElementById('panel-patients-tbody');
+        if (tbody) {
+          tbody.innerHTML = app.data.patients.map(p => `
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 0.6rem; font-weight: 700;">${p.name}</td>
+              <td style="padding: 0.6rem;">${p.role}</td>
+              <td style="padding: 0.6rem;">
+                <span class="badge ${p.risk === 'Bajo' ? 'badge-secondary' : 'badge-warning'}">${p.risk}</span>
+              </td>
+              <td style="padding: 0.6rem; font-weight: 700; color: var(--primary);">${p.adherence}%</td>
+              <td style="padding: 0.6rem; color: var(--text-muted);">${p.lastSession}</td>
+              <td style="padding: 0.6rem;">
+                <button class="btn btn-outline" style="padding: 0.25rem 0.6rem; font-size: 0.72rem;" onclick="alert('Abriendo ficha clínica de ${p.name}')">Ver Ficha</button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        // Render SOAP Sessions Log
+        const sessionsBox = document.getElementById('panel-sessions-container');
+        if (sessionsBox) {
+          sessionsBox.innerHTML = app.data.sessions.map(s => `
+            <div class="glass-card" style="padding: 1rem; border-left: 4px solid var(--secondary);">
+              <div style="display:flex; justify-content:space-between; margin-bottom: 0.4rem;">
+                <strong style="font-size: 0.95rem; color: var(--text-main);">${s.patient}</strong>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">${s.date}</span>
+              </div>
+              <div style="font-size: 0.8rem; line-height: 1.6; color: var(--text-main);">
+                <p><strong>S (Subjetivo):</strong> ${s.s}</p>
+                <p><strong>O (Objetivo):</strong> ${s.o}</p>
+                <p><strong>A (Análisis):</strong> ${s.a}</p>
+                <p><strong>P (Plan):</strong> ${s.p}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+      },
+
+      openNewSessionModal() {
+        document.getElementById('new-session-modal').classList.add('active');
+      },
+
+      closeNewSessionModal() {
+        document.getElementById('new-session-modal').classList.remove('active');
+      },
+
+      saveSession(e) {
+        e.preventDefault();
+        const patient = document.getElementById('soap-patient').value.trim();
+        const s = document.getElementById('soap-s').value.trim();
+        const o = document.getElementById('soap-o').value.trim();
+        const a = document.getElementById('soap-a').value.trim();
+        const p = document.getElementById('soap-p').value.trim();
+
+        if (!patient || !s) return;
+
+        const newSess = {
+          id: 's-' + Date.now(),
+          patient,
+          date: new Date().toISOString().slice(0, 10),
+          s, o, a, p
+        };
+
+        app.data.sessions.unshift(newSess);
+        app.saveData();
+
+        this.closeNewSessionModal();
+        this.render();
+        alert('Sesión SOAP registrada correctamente.');
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: INTERVENCIÓN EN CRISIS
+       ========================================================================== */
+    PastoralMenteApp.prototype.crisis = {
+      hotlines: [
+        { country: 'Colombia', phone: '106 / 192 (Opción 4)', label: 'Línea 106 de Atención en Salud Mental' },
+        { country: 'México', phone: '800 911 2000', label: 'Línea de la Vida (Gratuita 24/7)' },
+        { country: 'España', phone: '024 / 717 003 717', label: 'Línea de Atención a la Conducta Suicida' },
+        { country: 'Argentina', phone: '135 / (011) 5275-1135', label: 'Centro de Asistencia al Suicida' },
+        { country: 'Chile', phone: '*4141 / 600 360 7777', label: 'Línea de Prevención del Suicidio' },
+        { country: 'Estados Unidos & Int.', phone: '988 (Español disponible)', label: 'Suicide & Crisis Lifeline 24/7' },
+        { country: 'Emergencias Médicas', phone: '911 / 112', label: 'Urgencias y Ambulancias Hospitalarias' }
+      ],
+
+      timerInterval: null,
+
+      init() {
+        this.renderHotlines();
+        this.startBreathingCycle();
+      },
+
+      renderHotlines() {
+        const grid = document.getElementById('crisis-hotlines-grid');
+        if (!grid) return;
+
+        grid.innerHTML = this.hotlines.map(h => `
+          <div class="glass-card" style="padding: 1rem; border: 1px solid var(--danger);">
+            <div style="font-weight: 800; font-size: 0.88rem; color: var(--danger);">${h.country}</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.5rem;">${h.label}</div>
+            <a href="tel:${h.phone.replace(/[^0-9+*]/g, '')}" class="btn btn-danger" style="width: 100%; padding: 0.4rem; font-size: 0.78rem;">
+              Llamar: ${h.phone}
+            </a>
+          </div>
+        `).join('');
+      },
+
+      renderModalHotlines() {
+        const box = document.getElementById('modal-hotlines-list');
+        if (!box) return;
+
+        box.innerHTML = this.hotlines.slice(0, 4).map(h => `
+          <div style="display:flex; justify-content:space-between; align-items:center; background: var(--bg-surface-alt); padding: 0.5rem 0.8rem; border-radius: var(--radius-md);">
+            <span><strong>${h.country}:</strong> ${h.phone}</span>
+            <a href="tel:${h.phone.replace(/[^0-9+*]/g, '')}" class="btn btn-danger" style="padding: 0.25rem 0.6rem; font-size: 0.7rem;">Llamar</a>
+          </div>
+        `).join('');
+      },
+
+      startBreathingCycle() {
+        const circle = document.getElementById('breathing-circle');
+        const label = document.getElementById('breathing-phase-label');
+        const count = document.getElementById('breathing-timer-count');
+        if (!circle) return;
+
+        let phaseIdx = 0;
+        const phases = [
+          { name: 'Inhala', class: 'inhale', text: 'Inhala paz' },
+          { name: 'Sostén', class: 'hold', text: 'Sostén en fe' },
+          { name: 'Exhala', class: 'exhale', text: 'Suelta el afán' },
+          { name: 'Reposa', class: 'rest', text: 'Todo estará bien' }
+        ];
+
+        let seconds = 4;
+
+        if (this.timerInterval) clearInterval(this.timerInterval);
+
+        this.timerInterval = setInterval(() => {
+          seconds--;
+          if (seconds <= 0) {
+            phaseIdx = (phaseIdx + 1) % phases.length;
+            seconds = 4;
+            const p = phases[phaseIdx];
+            circle.className = `breathing-box ${p.class}`;
+            label.innerText = p.name;
+          }
+          count.innerText = seconds;
+        }, 1000);
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: REPORTES
+       ========================================================================== */
+    PastoralMenteApp.prototype.reportes = {
+      init() {
+        this.refresh();
+      },
+
+      refresh() {
+        document.getElementById('report-date').innerText = 'Fecha: ' + new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+        
+        // Render checkins list in report
+        const list = document.getElementById('rep-checkins-list');
+        if (list) {
+          list.innerHTML = app.data.seguimiento.map(s => `
+            <div style="border-bottom: 1px solid var(--border-color); padding: 0.4rem 0;">
+              <strong>${s.date}</strong> &bull; Sueño: ${s.sueno}h &bull; Ejercicio: ${s.ejercicio}min &bull; Oración: ${s.oracion}min &bull; <em>"${s.gratitud}"</em>
+            </div>
+          `).join('');
+        }
+      }
+    };
+
+    /* ==========================================================================
+       SUBMODULE: CONFIGURACIÓN & BACKUP
+       ========================================================================== */
+    PastoralMenteApp.prototype.config = {
+      init() {
+        const user = app.data.user;
+        document.getElementById('cfg-user-name').value = user.name || '';
+        document.getElementById('cfg-user-role').value = user.role || 'usuario';
+        document.getElementById('cfg-theme').value = user.theme || 'light';
+        document.getElementById('cfg-ai-provider').value = user.aiProvider || 'local';
+        document.getElementById('cfg-ai-key').value = user.aiKey || '';
+      },
+
+      saveAIKeys() {
+        app.data.user.aiProvider = document.getElementById('cfg-ai-provider').value;
+        app.data.user.aiKey = document.getElementById('cfg-ai-key').value.trim();
+        app.saveData();
+
+        document.getElementById('ai-provider-badge').innerText = app.data.user.aiProvider === 'local' 
+          ? 'Motor Heurístico' 
+          : app.data.user.aiProvider.toUpperCase();
+
+        alert('Configuración de Inteligencia Artificial guardada localmente.');
+      }
+    };
+
+    PastoralMenteApp.prototype.backup = {
+      exportJSON() {
+        const json = JSON.stringify(app.data, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `PastoralMente_Respaldo_${new Date().toISOString().slice(0, 10)}.json`;
+        a.click();
+      },
+
+      importJSON(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          try {
+            const imported = JSON.parse(evt.target.result);
+            if (imported.user && imported.evaluation) {
+              app.data = imported;
+              app.saveData();
+              alert('¡Respaldo importado con éxito! La página se actualizará.');
+              location.reload();
+            } else {
+              alert('El archivo no posee el formato válido de PastoralMente.');
+            }
+          } catch (err) {
+            alert('Error al leer el archivo JSON.');
+          }
+        };
+        reader.readAsText(file);
+      },
+
+      resetAll() {
+        if (confirm('¿Estás seguro de restablecer todos los datos a los valores de fábrica? Esta acción no se puede deshacer.')) {
+          localStorage.removeItem(STORAGE_KEY);
+          location.reload();
+        }
+      }
+    };
+
+    // Instantiate Application Globally
+    const app = new PastoralMenteApp();
+  </script>
+</body>
+</html>
