@@ -58,6 +58,32 @@ DIRECTRICES ÉTICAS CRÍTICAS:
 `;
 
 // API Routes
+app.post('/api/auth/professional-verify', (req: Request, res: Response) => {
+  const { accessCode } = req.body || {};
+  if (!accessCode || typeof accessCode !== 'string') {
+    return res.status(400).json({ authorized: false, error: 'Código de acceso requerido' });
+  }
+
+  const expectedKey = process.env.PROFESSIONAL_ACCESS_KEY || 'pastoral2026';
+  const isMatch = accessCode.trim() === expectedKey.trim();
+
+  if (!isMatch) {
+    return res.status(401).json({
+      authorized: false,
+      error: 'Código ministerial incorrecto. Verifique sus credenciales con la administración pastoral.',
+    });
+  }
+
+  const token = crypto.randomBytes(24).toString('hex');
+  return res.json({
+    authorized: true,
+    message: 'Acceso ministerial autorizado por el servidor',
+    token,
+    role: 'professional',
+    expiresIn: '4h',
+  });
+});
+
 app.post('/api/ai/chat', async (req: Request, res: Response) => {
   try {
     const { messages, userContext } = req.body;

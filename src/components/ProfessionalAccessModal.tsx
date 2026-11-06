@@ -14,25 +14,48 @@ export const ProfessionalAccessModal: React.FC<ProfessionalAccessModalProps> = (
 }) => {
   const [accessCode, setAccessCode] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
+    if (!accessCode.trim()) {
+      setError('Por favor ingrese el código de acceso ministerial.');
+      return;
+    }
 
-    // Official ministerial access code for PastoralMente Integral
-    if (accessCode.trim() === 'pastoral2026') {
-      setIsSuccess(true);
-      setTimeout(() => {
-        setIsSuccess(false);
-        setAccessCode('');
-        onSuccess();
-        onClose();
-      }, 700);
-    } else {
-      setError('Código ministerial incorrecto. Por favor verifique sus credenciales con la administración pastoral.');
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/auth/professional-verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ accessCode: accessCode.trim() }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.authorized) {
+        setIsSuccess(true);
+        if (data.token) {
+          sessionStorage.setItem('pastoralmente_prof_token', data.token);
+        }
+        setTimeout(() => {
+          setIsSuccess(false);
+          setAccessCode('');
+          onSuccess();
+          onClose();
+        }, 600);
+      } else {
+        setError(data.error || 'Código ministerial incorrecto o no autorizado por el servidor.');
+      }
+    } catch (err: any) {
+      setError('No se pudo conectar con el servidor de autenticación pastoral.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -114,10 +137,11 @@ export const ProfessionalAccessModal: React.FC<ProfessionalAccessModalProps> = (
               </button>
               <button
                 type="submit"
-                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all flex items-center space-x-1.5"
+                disabled={isLoading}
+                className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold text-xs shadow-md transition-all flex items-center space-x-1.5"
               >
                 <Lock className="w-3.5 h-3.5" />
-                <span>Ingresar al Panel</span>
+                <span>{isLoading ? 'Verificando...' : 'Ingresar al Panel'}</span>
               </button>
             </div>
           </form>

@@ -1711,6 +1711,7 @@
       constructor() {
         this.data = this.loadData();
         this.currentTab = 'dashboard';
+        window.app = this;
         this.init();
       }
 
@@ -1953,8 +1954,8 @@
         `).join('');
 
         // If previously completed, show results
-        if (window.app && window.window.app.data?.evaluation?.completed) {
-          this.displayResults(window.window.app.data.evaluation.profile);
+        if (window.app && window.app.data?.evaluation?.completed) {
+          this.displayResults(window.app.data.evaluation.profile);
         }
       },
 
@@ -2008,19 +2009,32 @@
       },
 
       displayResults(p) {
-        document.getElementById('evaluacion-results-box').style.display = 'block';
-        document.getElementById('res-perfil-emocional').innerText = p.emocional;
-        document.getElementById('res-perfil-espiritual').innerText = p.espiritual;
-        document.getElementById('res-fortalezas-list').innerHTML = p.fortalezas.map(f => `<li>${f}</li>`).join('');
-        document.getElementById('res-riesgos-list').innerHTML = p.riesgos.map(r => `<li>${r}</li>`).join('');
-        document.getElementById('res-recomendaciones').innerText = p.recomendaciones;
+        if (!p) return;
+        const box = document.getElementById('evaluacion-results-box');
+        if (!box) return;
+        box.style.display = 'block';
 
-        document.getElementById('evaluacion-results-box').scrollIntoView({ behavior: 'smooth' });
+        const emo = document.getElementById('res-perfil-emocional');
+        if (emo) emo.innerText = p.emocional || '';
+        const esp = document.getElementById('res-perfil-espiritual');
+        if (esp) esp.innerText = p.espiritual || '';
+        const fort = document.getElementById('res-fortalezas-list');
+        if (fort && Array.isArray(p.fortalezas)) fort.innerHTML = p.fortalezas.map(f => `<li>${f}</li>`).join('');
+        const ries = document.getElementById('res-riesgos-list');
+        if (ries && Array.isArray(p.riesgos)) ries.innerHTML = p.riesgos.map(r => `<li>${r}</li>`).join('');
+        const rec = document.getElementById('res-recomendaciones');
+        if (rec) rec.innerText = p.recomendaciones || '';
+
+        if (typeof box.scrollIntoView === 'function') {
+          box.scrollIntoView({ behavior: 'smooth' });
+        }
       },
 
       applyToPlan() {
         alert('¡Resultados integrados exitosamente a tu Plan de Crecimiento!');
-        app.navigate('plan');
+        if (window.app && typeof window.app.navigate === 'function') {
+          window.app.navigate('plan');
+        }
       }
     };
 
@@ -2030,7 +2044,7 @@
     PastoralMenteApp.prototype.diario = {
       init() {
         this.renderHistory();
-        if (window.app.data.diario.length > 0) {
+        if (window.app && window.app.data && window.app.data.diario && window.app.data.diario.length > 0) {
           this.displayAnalysis(window.app.data.diario[0].analysis);
         }
       },
@@ -2346,39 +2360,50 @@ if (!window.app || !window.app.data || !window.app.data.diario) {
       },
 
       render() {
-        const p = window.app.data.plan;
-        document.getElementById('plan-title').innerText = p.title;
-        document.getElementById('plan-summary').innerText = p.summary;
+        const p = (window.app && window.app.data && window.app.data.plan) || { objectives: [], milestones: [], tasks: [] };
+        const titleEl = document.getElementById('plan-title');
+        if (titleEl && p.title) titleEl.innerText = p.title;
+        const summaryEl = document.getElementById('plan-summary');
+        if (summaryEl && p.summary) summaryEl.innerText = p.summary;
 
         // Render SMART Objectives
-        document.getElementById('plan-objectives-container').innerHTML = p.objectives.map(o => `
-          <div class="glass-card" style="padding: 1rem; border-left: 4px solid var(--primary);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.35rem;">
-              <strong style="font-size: 0.85rem;">${o.title}</strong>
-              <input type="checkbox" ${o.done ? 'checked' : ''} onchange="app.plan.toggleObjective('${o.id}')" />
+        const objContainer = document.getElementById('plan-objectives-container');
+        if (objContainer && Array.isArray(p.objectives)) {
+          objContainer.innerHTML = p.objectives.map(o => `
+            <div class="glass-card" style="padding: 1rem; border-left: 4px solid var(--primary);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.35rem;">
+                <strong style="font-size: 0.85rem;">${o.title}</strong>
+                <input type="checkbox" ${o.done ? 'checked' : ''} onchange="app.plan.toggleObjective('${o.id}')" />
+              </div>
+              <p style="font-size: 0.75rem; color: var(--text-muted);">${o.meta}</p>
             </div>
-            <p style="font-size: 0.75rem; color: var(--text-muted);">${o.meta}</p>
-          </div>
-        `).join('');
+          `).join('');
+        }
 
         // Render Weekly Milestones
-        document.getElementById('plan-milestones-container').innerHTML = p.milestones.map(m => `
-          <div style="background: var(--bg-surface-alt); padding: 0.75rem 1rem; border-radius: var(--radius-md); display:flex; justify-content:space-between; align-items:center;">
-            <div style="font-size: 0.8rem;">
-              <span class="badge badge-secondary" style="margin-right: 0.5rem;">Semana ${m.week}</span>
-              <span style="${m.done ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${m.text}</span>
+        const milesContainer = document.getElementById('plan-milestones-container');
+        if (milesContainer && Array.isArray(p.milestones)) {
+          milesContainer.innerHTML = p.milestones.map(m => `
+            <div style="background: var(--bg-surface-alt); padding: 0.75rem 1rem; border-radius: var(--radius-md); display:flex; justify-content:space-between; align-items:center;">
+              <div style="font-size: 0.8rem;">
+                <span class="badge badge-secondary" style="margin-right: 0.5rem;">Semana ${m.week}</span>
+                <span style="${m.done ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${m.text}</span>
+              </div>
+              <input type="checkbox" ${m.done ? 'checked' : ''} onchange="app.plan.toggleMilestone(${m.week})" />
             </div>
-            <input type="checkbox" ${m.done ? 'checked' : ''} onchange="app.plan.toggleMilestone(${m.week})" />
-          </div>
-        `).join('');
+          `).join('');
+        }
 
         // Render Daily Tasks
-        document.getElementById('plan-tasks-container').innerHTML = p.tasks.map(t => `
-          <div style="background: var(--bg-surface-alt); padding: 0.65rem 1rem; border-radius: var(--radius-md); display:flex; justify-content:space-between; align-items:center;">
-            <span style="font-size: 0.82rem; ${t.done ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${t.text}</span>
-            <input type="checkbox" ${t.done ? 'checked' : ''} onchange="app.plan.toggleTask('${t.id}')" />
-          </div>
-        `).join('');
+        const tasksContainer = document.getElementById('plan-tasks-container');
+        if (tasksContainer && Array.isArray(p.tasks)) {
+          tasksContainer.innerHTML = p.tasks.map(t => `
+            <div style="background: var(--bg-surface-alt); padding: 0.65rem 1rem; border-radius: var(--radius-md); display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size: 0.82rem; ${t.done ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${t.text}</span>
+              <input type="checkbox" ${t.done ? 'checked' : ''} onchange="app.plan.toggleTask('${t.id}')" />
+            </div>
+          `).join('');
+        }
       },
 
       toggleObjective(id) {
@@ -2900,30 +2925,22 @@ if (!window.app || !window.app.data || !window.app.data.diario) {
       }
     };
 
-    // Instantiate Application Glo
-    window.addEventListener('DOMContentLoaded', () => {
-
-    try {
-
-        window.app = new PastoralMenteApp();
-
-    } catch (error) {
-
-        console.error(error);
-
-        window.app = {
-            navigate(){},
-            toggleTheme(){},
-            saveData(){},
-            data:{
-                diario:[],
-                evaluation:{}
-            }
-        };
-
+    // Instantiate Application Globally
+    function initPastoralMente() {
+      if (!window.app || typeof window.app.navigate !== 'function') {
+        try {
+          window.app = new PastoralMenteApp();
+        } catch (error) {
+          console.error('Error al inicializar PastoralMenteApp:', error);
+        }
+      }
     }
 
-});
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initPastoralMente);
+    } else {
+      initPastoralMente();
+    }
   </script>
 </body>
 </html>
