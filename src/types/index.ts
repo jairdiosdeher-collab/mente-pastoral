@@ -7,6 +7,7 @@ export type ActiveTab =
   | 'journal'
   | 'school'
   | 'predictive'
+  | 'whatsapp'
   | 'professional_panel';
 
 export type UserRole = 'member' | 'professional'; // 'member' (usuario) or 'professional' (pastor / psicólogo)
@@ -123,6 +124,7 @@ export interface ChatMessage {
   sender: 'user' | 'assistant';
   content: string;
   timestamp: string;
+  source?: 'gemini' | 'prepared_resource';
   suggestedAction?: {
     type: 'exercise' | 'scripture' | 'crisis' | 'journal';
     label: string;
@@ -283,3 +285,107 @@ export interface PredictiveAnalysis {
   }[];
   dynamicRecommendations: string[];
 }
+
+// ================= MODULE 10: WASAPFLOW BRIDGE & WHATSAPP PASTORAL =================
+export interface WABAConnection {
+  status: 'pending_configuration' | 'connected' | 'disconnected' | 'connecting' | 'qr_ready';
+  wabaId: string | null;
+  phoneNumberId: string | null;
+  displayPhoneNumber: string | null;
+  verifiedName: string | null;
+  qualityRating: 'GREEN' | 'YELLOW' | 'RED' | 'UNKNOWN';
+  webhookRegistered: boolean;
+  webhookUrl: string;
+  lastSyncAt: string;
+  provider: 'WasapFlow Bridge API v1';
+  mode: 'live' | 'unconfigured' | 'development_preview';
+  message?: string;
+}
+
+export type WhatsAppMessageStatus = 'queued' | 'sent' | 'delivered' | 'read' | 'failed';
+
+export interface WhatsAppMessage {
+  id: string;
+  conversationId: string;
+  waMessageId?: string;
+  direction: 'inbound' | 'outbound';
+  type: 'text' | 'template' | 'image' | 'audio' | 'document';
+  text: string;
+  timestamp: string;
+  status: WhatsAppMessageStatus;
+  mediaUrl?: string;
+  templateName?: string;
+  isAiGenerated?: boolean;
+  approvedByHuman?: boolean;
+}
+
+export interface WhatsAppContact {
+  id: string;
+  phoneNumber: string; // E.164 e.g. +573001234567
+  name: string;
+  avatar?: string;
+  tags: ('Nuevo' | 'En Oración' | 'Seguimiento' | 'Crisis' | 'Liderazgo' | 'Consejería')[];
+  spiritualStatus: 'Buscador' | 'Creyente Nuevo' | 'Miembro Activo' | 'En Duelo' | 'Restauración';
+  assignedPastor?: string;
+  notes: string;
+  prayerRequests: string[];
+  lastContactAt: string;
+  unreadCount: number;
+  riskAlert?: boolean;
+}
+
+export interface WhatsAppConversation {
+  id: string;
+  contact: WhatsAppContact;
+  lastMessage: WhatsAppMessage;
+  unreadCount: number;
+  stage: 'triaje' | 'atencion_activa' | 'oracion' | 'seguimiento_cerrado';
+  aiSuggestionPending?: boolean;
+  notes?: string;
+}
+
+export interface PastoralAISuggestion {
+  conversationId: string;
+  detectedNeed: 'Duelo o Pérdida' | 'Ansiedad y Angustia' | 'Crisis Matrimonial/Familiar' | 'Petición de Oración' | 'Crecimiento Espiritual' | 'Información General';
+  riskLevel: 'Bajo' | 'Moderado' | 'Alto / Crisis Inmediata';
+  summary: string;
+  biblicalAnchor: {
+    verse: string;
+    text: string;
+    pastoralReframe: string;
+  };
+  cbtTechnique?: {
+    name: string;
+    instruction: string;
+  };
+  draftReply: string;
+  disclaimerIncluded: boolean;
+  createdAt: string;
+}
+
+export interface WhatsAppTemplate {
+  id: string;
+  name: string;
+  category: 'UTILITY' | 'MARKETING' | 'AUTHENTICATION';
+  language: string;
+  status: 'APPROVED' | 'PENDING' | 'REJECTED';
+  body: string;
+  variables: string[];
+}
+
+export interface WhatsAppAnalytics {
+  totalMessagesSent: number;
+  totalMessagesReceived: number;
+  deliveryRate: number; // e.g. 98.4
+  readRate: number;     // e.g. 92.1
+  activeConversations: number;
+  pendingAiApprovals: number;
+  estimatedCosts: {
+    wasapFlowMonthlyUsd: number;
+    metaConversationsUsd: number;
+    geminiAiUsd: number;
+    firebaseUsd: number;
+    totalUsd: number;
+  };
+}
+

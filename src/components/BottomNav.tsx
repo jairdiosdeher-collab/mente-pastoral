@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Sparkles, Heart, BookHeart, BookOpen } from 'lucide-react';
+import { Compass, Sparkles, Heart, BookHeart, MessageSquare } from 'lucide-react';
 import { ActiveTab } from '../types';
 
 interface BottomNavProps {
@@ -10,10 +10,10 @@ interface BottomNavProps {
 export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab }) => {
   const tabs = [
     { id: 'home', label: 'Inicio', icon: Compass },
+    { id: 'whatsapp', label: 'WhatsApp', icon: MessageSquare },
     { id: 'plan', label: 'Mi Plan', icon: Sparkles },
     { id: 'therapist', label: 'Asistente IA', icon: Heart },
     { id: 'journal', label: 'Diario', icon: BookHeart },
-    { id: 'school', label: 'Escuela', icon: BookOpen },
   ];
 
   return (

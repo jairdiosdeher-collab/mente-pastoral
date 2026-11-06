@@ -13,7 +13,8 @@ import {
   BookHeart, 
   Menu, 
   X,
-  Stethoscope
+  Stethoscope,
+  MessageSquare
 } from 'lucide-react';
 import { ActiveTab, UserRole } from '../types';
 
@@ -23,6 +24,7 @@ interface NavbarProps {
   userRole: UserRole;
   setUserRole: (role: UserRole) => void;
   onOpenCrisis: () => void;
+  onOpenProfessionalAccess: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -31,11 +33,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   userRole,
   setUserRole,
   onOpenCrisis,
+  onOpenProfessionalAccess,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const navItems = [
     { id: 'home', label: 'Inicio', icon: Compass },
+    { id: 'whatsapp', label: 'WhatsApp Pastoral', icon: MessageSquare },
     { id: 'assessment', label: 'Evaluación', icon: Brain },
     { id: 'plan', label: 'Plan de Crecimiento', icon: Sparkles },
     { id: 'therapist', label: 'Asistente IA', icon: Heart },
@@ -129,15 +133,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               <button
                 onClick={() => {
-                  setUserRole('professional');
-                  setActiveTab('professional_panel');
+                  if (userRole === 'professional') {
+                    setActiveTab('professional_panel');
+                  } else {
+                    onOpenProfessionalAccess();
+                  }
                 }}
                 className={`flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                   userRole === 'professional'
                     ? 'bg-white text-emerald-800 shadow-xs'
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
-                title="Modo de gestión para Pastores o Psicólogos clínicos"
+                title="Modo de gestión para Pastores o Psicólogos clínicos (Requiere clave ministerial)"
               >
                 <Stethoscope className="w-3.5 h-3.5 text-emerald-600" />
                 <span className="hidden sm:inline">Pastor/Psicólogo</span>

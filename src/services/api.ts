@@ -1,6 +1,9 @@
 import { ChatMessage, AssessmentResult, GrowthPlan, JournalEntry, PredictiveAnalysis } from '../types';
 
-export async function sendChatMessage(messages: { role: string; content: string }[], userContext?: any): Promise<string> {
+export async function sendChatMessage(
+  messages: { role: string; content: string }[],
+  userContext?: any
+): Promise<{ reply: string; source: 'gemini' | 'prepared_resource'; sourceLabel?: string }> {
   try {
     const res = await fetch('/api/ai/chat', {
       method: 'POST',
@@ -11,16 +14,24 @@ export async function sendChatMessage(messages: { role: string; content: string 
       throw new Error(`Server returned ${res.status}`);
     }
     const data = await res.json();
-    return data.reply;
+    return {
+      reply: data.reply,
+      source: data.source || 'prepared_resource',
+      sourceLabel: data.sourceLabel || (data.source === 'gemini' ? 'Generado por Gemini 3.8 Flash' : 'Recurso pastoral preparado'),
+    };
   } catch (error) {
     console.warn('Fallback chat response due to network/server:', error);
     const lastMsg = messages[messages.length - 1]?.content || '';
-    return `Te escucho con atención y respeto lo que sientes. La Biblia nos recuerda: "Cercano está Jehová a los quebrantados de corazón; y salva a los contritos de espíritu" (Salmo 34:18). 
+    return {
+      reply: `Te escucho con atención y respeto lo que sientes. La Biblia nos recuerda: "Cercano está Jehová a los quebrantados de corazón; y salva a los contritos de espíritu" (Salmo 34:18). 
 
-Respecto a "${lastMsg.slice(0, 70)}...":
+Respecto a lo que compartes:
 1. Toma una respiración profunda y suelta la tensión física en tus hombros.
 2. Recuerda que un pensamiento ansioso no es una profecía, sino una hipótesis que tu mente genera en momentos de sobrecarga.
-3. ¿Qué pequeño paso de autocuidado o momento de oración honesta te traería 5% más de serenidad en este instante?`;
+3. ¿Qué pequeño paso de autocuidado o momento de oración honesta te traería 5% más de serenidad en este instante?`,
+      source: 'prepared_resource',
+      sourceLabel: 'Recurso pastoral preparado (Modo local sin conexión)',
+    };
   }
 }
 

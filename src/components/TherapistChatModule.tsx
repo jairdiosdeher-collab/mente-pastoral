@@ -88,7 +88,7 @@ Estoy aquí para escucharte sin juzgarte, ayudarte a ordenar tus pensamientos a 
           content: m.content,
         }));
 
-      const reply = await sendChatMessage(historyPayload, {
+      const chatRes = await sendChatMessage(historyPayload, {
         resilienceScore: assessmentResult.emotionalProfile.resilienceScore,
         dominantState: assessmentResult.emotionalProfile.dominantState,
       });
@@ -96,7 +96,8 @@ Estoy aquí para escucharte sin juzgarte, ayudarte a ordenar tus pensamientos a 
       const assistantMsg: ChatMessage = {
         id: `ast-${Date.now()}`,
         sender: 'assistant',
-        content: reply,
+        content: chatRes.reply,
+        source: chatRes.source,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
 
@@ -193,6 +194,19 @@ Estoy aquí para escucharte sin juzgarte, ayudarte a ordenar tus pensamientos a 
                       : 'bg-slate-50 border border-slate-200/80 text-slate-800 rounded-tl-xs shadow-2xs whitespace-pre-wrap'
                   }`}
                 >
+                  {!isUser && m.source && (
+                    <div className="mb-2 flex items-center">
+                      {m.source === 'gemini' ? (
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-purple-100 text-purple-800 border border-purple-200 flex items-center gap-1">
+                          <Sparkles className="w-3 h-3 text-purple-600" /> Generado por Gemini 3.8 Flash
+                        </span>
+                      ) : (
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-sky-100 text-sky-800 border border-sky-200 flex items-center gap-1">
+                          <BookOpen className="w-3 h-3 text-sky-600" /> Recurso pastoral preparado
+                        </span>
+                      )}
+                    </div>
+                  )}
                   <p>{m.content}</p>
                   <div
                     className={`text-[10px] mt-2 font-medium ${
